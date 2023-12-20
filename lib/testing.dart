@@ -17,9 +17,9 @@ class DropdownMenuApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
 
-          backgroundColor: Colors.cyanAccent,
+          backgroundColor: Colors.grey,
         appBar: AppBar(title: const Text('DropdownMenu Sample')),
-        body: const Center(
+        body:  Center(
 
           child: DropdownMenuExample(),
         ),
@@ -28,41 +28,46 @@ class DropdownMenuApp extends StatelessWidget {
   }
 }
 
-class DropdownMenuExample extends StatefulWidget {
-  const DropdownMenuExample({super.key});
 
+List<String> draw = <String>['select', '200', '1500','100'];
+
+class DropdownMenuExample extends StatefulWidget {
   @override
   State<DropdownMenuExample> createState() => _DropdownMenuExampleState();
 }
 
 class _DropdownMenuExampleState extends State<DropdownMenuExample> {
-
+  String dropdownValue = draw.first;
 
   @override
   Widget build(BuildContext context) {
-     return Container(
-       width: 150,
-       child: DropdownSearch<String>(
-         popupProps: PopupProps.menu(
-           showSelectedItems: true,
-           disabledItemFn: (String s) => s.startsWith('I'),
-         ),
-         items: ["Brazil", "Italia (Disabled)", "Tunisia", 'Canada'],
-         dropdownDecoratorProps: DropDownDecoratorProps(
-           dropdownSearchDecoration: InputDecoration(
-             contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-             enabledBorder: OutlineInputBorder(
-               borderRadius: BorderRadius.circular(8),
-               borderSide: BorderSide(color: Colors.blue, width: 5.0),
-             ),
-             labelText: "Menu mode",
-             hintText: "country in menu mode",
-           ),
-         ),
-         onChanged: print,
-         selectedItem: "Brazil",
-
-       ),
-     );
+    return Container(
+      width: 150,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue), // Set border color
+        borderRadius: BorderRadius.circular(8.0), // Set border radius
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: dropdownValue,
+          icon: Icon(Icons.arrow_drop_down),
+          iconSize: 24,
+          elevation: 16,
+          style: TextStyle(color: Colors.black),
+          onChanged: (String? newValue) {
+            setState(() {
+              dropdownValue = newValue!;
+            });
+          },
+          items: draw.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+      ),
+    );
   }
 }
+

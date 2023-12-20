@@ -39,8 +39,9 @@ class Homepage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Drawdropdown(),
+
                     Datedropdown(),
+                    Drawdropdown(),
                   ],
                 ),
                 SizedBox(height: 15),

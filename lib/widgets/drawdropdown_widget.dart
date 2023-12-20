@@ -3,7 +3,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 
 //Draw dropdown
 
-List<String> draw = <String>['100', '200', '1500'];
+List<String> draw = <String>['select', '200', '1500','100', '200', '1500','100', '200', '1500','100', '200', '1500', '200', '1500','100', '200', '1500','100', '200',];
 
 class Drawdropdown extends StatefulWidget {
   @override
@@ -16,8 +16,31 @@ class _DrawdropdownState extends State<Drawdropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12),
       width: 150,
       child: DropdownMenu<String>(
+        menuHeight: 200,
+        menuStyle: MenuStyle(
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0), // Adjust the border radius as needed
+              side: BorderSide(color: Colors.red), // Adjust the border color
+            ),
+          ),
+          backgroundColor: MaterialStatePropertyAll<Color>(Colors.green.shade300),
+        ),
+        // menuStyle: MenuStyle(
+        //   backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+        //         (Set<MaterialState> states) {
+        //       if (states.contains(MaterialState.focused)) {
+        //         return Theme.of(context).colorScheme.primary.withOpacity(0.5);
+        //       }
+        //       return null; // Use the component's default.
+        //     },
+        //   ),
+        // ),
+
+        label: Text("Draw"),
         initialSelection: draw.first,
         onSelected: (String? value) {
           // This is called when the user selects an item.
@@ -28,10 +51,13 @@ class _DrawdropdownState extends State<Drawdropdown> {
         dropdownMenuEntries: draw.map<DropdownMenuEntry<String>>((String value) {
           return DropdownMenuEntry<String>(value: value, label: value);
         }).toList(),
+
       ),
     );
   }
 }
+
+///////////////////////////////////////////////////////////////
 
 // class Drawdropdown extends StatefulWidget {
 //   const Drawdropdown({super.key});
