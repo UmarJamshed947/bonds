@@ -1,3 +1,4 @@
+import 'package:bonds/widgets/draw_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
 import 'package:bonds/widgets/drawdropdown_widget.dart';
@@ -20,10 +21,10 @@ class Homepage extends StatelessWidget {
       Stack(
         children: [
           Container(
-            height: 250,
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            height: 200,
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: Colors.grey[500],
               // gradient: LinearGradient(
               //   colors: [Color(0xFF87ABE7), Color(0xFF3A77BB)], // Blue Gradient
               // ),
@@ -36,12 +37,12 @@ class Homepage extends StatelessWidget {
             Column(
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    Datedropdown(),
-                    Drawdropdown(),
+                    DrawDropdown(),
+                    DrawDropdown(),
                   ],
                 ),
                 SizedBox(height: 15),
@@ -68,7 +69,7 @@ class Homepage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(top: 150),
+              margin: EdgeInsets.only(top: 180),
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: GridView.count(
@@ -104,6 +105,7 @@ class Homepage extends StatelessWidget {
                       icon: Icons.star,
                       color: Color(0xFFE74C3C), // Red
                     ),
+
                   ],
                 ),
               ),

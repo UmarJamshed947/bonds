@@ -24,11 +24,14 @@ class _DrawdropdownState extends State<Drawdropdown> {
           shape: MaterialStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0), // Adjust the border radius as needed
-              side: BorderSide(color: Colors.red), // Adjust the border color
+              side: BorderSide(color: Colors.blueAccent), // Adjust the border color
             ),
           ),
-          backgroundColor: MaterialStatePropertyAll<Color>(Colors.green.shade300),
+          backgroundColor: MaterialStatePropertyAll<Color>(Colors.grey.shade300),
+
         ),
+
+
         // menuStyle: MenuStyle(
         //   backgroundColor: MaterialStateProperty.resolveWith<Color?>(
         //         (Set<MaterialState> states) {
@@ -51,6 +54,7 @@ class _DrawdropdownState extends State<Drawdropdown> {
         dropdownMenuEntries: draw.map<DropdownMenuEntry<String>>((String value) {
           return DropdownMenuEntry<String>(value: value, label: value);
         }).toList(),
+
 
       ),
     );

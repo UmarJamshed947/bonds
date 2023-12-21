@@ -6,19 +6,18 @@ class CardWidget extends StatelessWidget {
   final IconData? icon;
   final String txt;
 
-  CardWidget ({this.color, this.icon, required this.txt});
-
+  CardWidget({this.color, this.icon, required this.txt});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.all(6.0),
+      padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: Card(
-        elevation: 2,
+        elevation: 4,
         color: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          side: BorderSide(color: Colors.white),
+
         ),
         child: InkWell(
           onTap: () {
@@ -33,16 +32,16 @@ class CardWidget extends StatelessWidget {
                   size: 50,
                   color: Colors.white,
                 ),
+                SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(2.0),
                   child: Text(
                     txt,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.nunito(
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      fontSize: 16
-                    ),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20),
                   ),
                 )
               ],
