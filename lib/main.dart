@@ -1,6 +1,7 @@
 
 
 import 'package:bonds/Dashboard.dart';
+import 'package:bonds/screens/draw_search.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 
@@ -10,7 +11,7 @@ class Prizebonds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Dashboard(),
+      home: Drawsearch(),
     );
   }
 }

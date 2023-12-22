@@ -84,10 +84,13 @@ class Dashboard extends StatelessWidget {
                       topRight: Radius.circular(50),
                     ),
                   ),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10),
+                  child: Padding(
+                    padding:  EdgeInsets.all(16),
                     child: GridView.count(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
                       crossAxisCount: 2,
+                      childAspectRatio: 1.2,
                       children: [
                         CardWidget(
                           txt: "Draw-Search",

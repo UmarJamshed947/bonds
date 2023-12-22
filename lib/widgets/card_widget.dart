@@ -10,42 +10,39 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-      child: Card(
-        elevation: 4,
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+    return Card(
+      elevation: 4,
+      color: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
 
-        ),
-        child: InkWell(
-          onTap: () {
-            // Handle item tap
-          },
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Icon(
-                  icon,
-                  size: 50,
-                  color: Colors.white,
+      ),
+      child: InkWell(
+        onTap: () {
+          // Handle item tap
+        },
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(
+                icon,
+                size: 50,
+                color: Colors.white,
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsets.all(2.0),
+                child: Text(
+                  txt,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.nunito(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20),
                 ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Text(
-                    txt,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.nunito(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),
