@@ -1,3 +1,4 @@
+import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:bonds/widgets/draw_dropdown.dart';
 import 'package:bonds/widgets/two_value_card.dart';
@@ -8,6 +9,9 @@ import 'package:bonds/widgets/dropdown_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatelessWidget {
+
+  ApiService apiService = ApiService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +66,20 @@ class Dashboard extends StatelessWidget {
                     labelStyle: TextStyle(color: Colors.white),
                     hintStyle: GoogleFonts.nunito(color: Colors.white),
                     prefixIcon: Icon(Icons.search, color: Colors.white),
+                    suffixIcon: GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DateDropdown(
+
+                              ),
+                            ),
+                          );
+                          print("click");
+                        },
+
+                        child: Icon(Icons.arrow_circle_right_outlined,color: Colors.white,size: 30)),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: BorderSide(color: Colors.white, width: 4),
@@ -103,8 +121,7 @@ class Dashboard extends StatelessWidget {
                           icon: Icons.file_download,
                           color: Colors.teal,
                           // color: Color(0xFF3498DB), // Blue
-                        ),
-                        CardWidget(
+                        ), CardWidget(
                           txt: "Schedules",
                           icon: Icons.event,
                           color: Colors.teal,

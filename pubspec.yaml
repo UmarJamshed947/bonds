@@ -38,6 +38,9 @@ dependencies:
   google_fonts: ^6.1.0
   dropdown_search: ^5.0.6
   dropdown_button2: ^2.3.9
+  get:
+  http:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
