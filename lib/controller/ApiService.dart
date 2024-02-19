@@ -22,6 +22,7 @@ class ApiService{
 
 
   Future<List<BondType>> fetchBondTypeData() async {
+
     var url = Uri.parse(Baseurl+'prize-bond-types');
     final response = await http.get(url);
     print(response.body);
@@ -35,10 +36,11 @@ class ApiService{
   }
 
   Future<List<DrawDate>> fetchDrawDateData(String drawuid ) async {
+
     var url = Uri.parse(Baseurl+'draw/dates?prize_bond_type_uid=$drawuid');
     final response = await http.post(url);
     print(response.body);
-    print("Responasse");
+    print("dateresponse");
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
       return jsonResponse.map((data) => DrawDate.fromJson(data)).toList();

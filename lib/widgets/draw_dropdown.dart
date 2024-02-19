@@ -3,17 +3,25 @@ import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Models/BondDrawDate.dart';
 
 class DrawDropdown extends StatefulWidget {
+
+  final ValueChanged<String?> onDrawSelected;
+
+  DrawDropdown({required this.onDrawSelected});
+
+
   @override
   State<DrawDropdown> createState() => _DrawDropdownState();
 }
 
 class _DrawDropdownState extends State<DrawDropdown> {
+
   ApiService apiService = ApiService();
   List<BondType> bondTypes = [];
   String? selectedValue;
@@ -31,10 +39,11 @@ class _DrawDropdownState extends State<DrawDropdown> {
       });
     });
   }
-  Future<void> saveSelectedDrawUid(String drawUid) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('selectedDrawUid', drawUid);
-  }
+
+  // Future<void> saveSelectedDrawUid(String drawUid) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setString('selectedDrawUid', drawUid);
+  // }
 
 
   @override
@@ -60,7 +69,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
           ),
           items: bondTypes
               .map((BondType item) => DropdownMenuItem<String>(
-            value: item.name,
+            value: item.prizeBondTypeUid,
             child: Text(
               item.name,
               style: TextStyle(
@@ -79,41 +88,12 @@ class _DrawDropdownState extends State<DrawDropdown> {
               print(selectedValue);
             });
             if (value != null) {
-              // Fetch additional data for the selected item
-              BondType selectedBondType =
-              bondTypes.firstWhere((bondType) => bondType.name == value);
-              print(selectedBondType.prizeBondTypeUid);
-              // Navigate to the next screen and pass the selected item data
-              // Fetch data for the selected item
-              List<DrawDate> drawdate = await apiService.fetchDrawDateData(selectedBondType.prizeBondTypeUid);
-              // Save the selected drawuid in shared preferences
-              await saveSelectedDrawUid(selectedBondType.prizeBondTypeUid);
-              //DateDropdown.of(context)?.updateData(drawdate);
-
-              // Get.to(
-              //   DateDropdown(
-              //     drawuid: selectedBondType.prizeBondTypeUid,
-              //     drawdate:drawdate,
-              //     // Pass other data if needed
-              //     //amount: selectedBondType.amount,
-              //     //firstPrize: selectedBondType.firstPrize,
-              //     //secondPrize: selectedBondType.secondPrize,
-              //  //   thirdPrize: selectedBondType.thirdPrize,
-              //    // premium: selectedBondType.premium,
-              //   ),
-              // );
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DateDropdown(
-                    drawuid: selectedBondType.prizeBondTypeUid,
-                    drawdate: drawdate,
-                  ),
-                ),
-              );
-
+              // Pass the selected draw UID to the DateDropdown widget
+              widget.onDrawSelected(value);
             }
+
+
+
 
           },
           buttonStyleData: ButtonStyleData(

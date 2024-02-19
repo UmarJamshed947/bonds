@@ -41,8 +41,8 @@ class Homepage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    DrawDropdown(),
-                    DrawDropdown(),
+                    DrawDropdown(onDrawSelected: (String? value) {  },),
+                    DrawDropdown(onDrawSelected: (String? value) {  },),
                   ],
                 ),
                 SizedBox(height: 15),

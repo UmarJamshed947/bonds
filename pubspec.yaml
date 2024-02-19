@@ -41,6 +41,7 @@ dependencies:
   get:
   http:
   shared_preferences:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:
