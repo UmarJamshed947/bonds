@@ -1,8 +1,9 @@
-import 'package:bonds/Models/BondDrawDate.dart';
+import 'package:bonds/Models/Draw_Date.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 class DateDropdown extends StatefulWidget {
   String? drawUid;
@@ -22,9 +23,9 @@ class _DateDropdownState extends State<DateDropdown> {
   @override
   void initState() {
     super.initState();
-    fetchData();
-    print("Initial drawdate: $drawdate");
-    print("Initial drawUid: ${widget.drawUid}");
+
+    // print("Initial drawdate: $drawdate");
+    // print("Initial drawUid: ${widget.drawUid}");
     //   if (widget.drawdate != null) {
     //     drawdate = widget.drawdate!;
     //   } else {
@@ -33,27 +34,17 @@ class _DateDropdownState extends State<DateDropdown> {
   }
 
   Future<void> fetchData() async {
-    print("Fetching dates for draw UID: ${widget.drawUid}");
+    //print("Fetching dates for draw UID: ${widget.drawUid}");
     if (widget.drawUid != null) {
       drawdate = await apiService.fetchDrawDateData(widget.drawUid!);
-      print("Fetched dates: $drawdate");
+      //print("Fetched dates: $drawdate");
       setState(() {});
     }
   }
 
-  // Future<void> fetchData() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String? drawUid = prefs.getString('selectedDrawUid');
-  //
-  //   await apiService.fetchDrawDateData(drawUid.toString()).then((value) {
-  //     setState(() {
-  //       drawdate = value;
-  //     });
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
+    fetchData();
     return Material(
       child: DropdownButtonHideUnderline(
           child: DropdownButton2<String>(
@@ -73,20 +64,21 @@ class _DateDropdownState extends State<DateDropdown> {
             ),
           ],
         ),
-        items: drawdate
-            .map((DrawDate item) => DropdownMenuItem<String>(
-                  value: item.date.toString(),
-                  child: Text(
-                    item.date.toString(),
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ))
-            .toList(),
+        items: drawdate.map((DrawDate item) {
+          String formattedDate = DateFormat('dd-MM-yyyy').format(item.date);
+          return DropdownMenuItem<String>(
+            value: formattedDate,
+            child: Text(
+              formattedDate,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          );
+        }).toList(),
         value: selectedValue,
         onChanged: (String? value) {
           setState(() {
@@ -94,28 +86,8 @@ class _DateDropdownState extends State<DateDropdown> {
             print(selectedValue);
           });
           if (value != null) {
-
             widget.onDateSelected(value);
           }
-
-          /* if (value != null) {
-                  // Fetch additional data for the selected item
-                  BondType selectedBondType =
-                  bondTypes.firstWhere((bondType) => bondType.name == value);
-                  print(selectedBondType.prizeBondTypeUid);
-                  // Navigate to the next screen and pass the selected item data
-                  */ /*    Get.to(
-                DateDropdown(
-                  drawuid: selectedBondType.prizeBondTypeUid,
-                  // Pass other data if needed
-                  //amount: selectedBondType.amount,
-                  //firstPrize: selectedBondType.firstPrize,
-                  //secondPrize: selectedBondType.secondPrize,
-               //   thirdPrize: selectedBondType.thirdPrize,
-                 // premium: selectedBondType.premium,
-                ),
-              );*/ /*
-                }*/
         },
         buttonStyleData: ButtonStyleData(
           height: 60,

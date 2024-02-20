@@ -11,7 +11,7 @@ void main() => runApp(Prizebonds());
 class Prizebonds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       home: Dashboard(),
     );
   }

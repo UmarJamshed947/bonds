@@ -42,6 +42,8 @@ dependencies:
   http:
   shared_preferences:
   fluttertoast:
+  intl:
+  provider:
 
 dev_dependencies:
   flutter_test:

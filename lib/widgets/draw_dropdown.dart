@@ -1,4 +1,4 @@
-import 'package:bonds/Models/BondTypeModel.dart';
+import 'package:bonds/Models/Bond_Type.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -7,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Models/BondDrawDate.dart';
+import '../Models/Draw_Date.dart';
 
 class DrawDropdown extends StatefulWidget {
 
