@@ -1,11 +1,9 @@
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:bonds/widgets/draw_dropdown.dart';
-import 'package:bonds/widgets/two_value_card.dart';
+import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
-import 'package:bonds/widgets/drawdropdown_widget.dart';
-import 'package:bonds/widgets/dropdown_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
@@ -15,10 +13,9 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   ApiService apiService = ApiService();
-
   String? selectedDrawUid;
-
   String? selectedDate;
+  String? selectedDateid;
 
   @override
   Widget build(BuildContext context) {
@@ -73,43 +70,52 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
               SizedBox(height: 20),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                height: 100,
-                width: 410,
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                    hintText: 'Search draw numbers',
-                    labelText: "Search Numbers",
-                    labelStyle: TextStyle(color: Colors.white),
-                    hintStyle: GoogleFonts.nunito(color: Colors.white),
-                    prefixIcon: Icon(Icons.search, color: Colors.white),
-                    suffixIcon: GestureDetector(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => DateDropdown(
-                          //
-                          //     ),
-                          //   ),
-                          // );
-                          // print("click");
-                        },
-                        child: Icon(Icons.arrow_circle_right_outlined,
-                            color: Colors.white, size: 30)),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(color: Colors.white, width: 4),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(color: Colors.white, width: 2),
-                    ),
-                  ),
-                ),
+              // Container(
+              //   padding: EdgeInsets.symmetric(horizontal: 20),
+              //   height: 100,
+              //   width: 410,
+              //   child: TextField(
+              //     decoration: InputDecoration(
+              //       contentPadding:
+              //           EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              //       hintText: 'Search draw numbers',
+              //       labelText: "Search Numbers",
+              //       labelStyle: TextStyle(color: Colors.white),
+              //       hintStyle: GoogleFonts.nunito(color: Colors.white),
+              //       prefixIcon: Icon(Icons.search, color: Colors.white),
+              //       suffixIcon: GestureDetector(
+              //           onTap: () {
+              //             // Navigator.push(
+              //             //   context,
+              //             //   MaterialPageRoute(
+              //             //     builder: (context) => DateDropdown(
+              //             //
+              //             //     ),
+              //             //   ),
+              //             // );
+              //             // print("click");
+              //           },
+              //           child: Icon(Icons.arrow_circle_right_outlined,
+              //               color: Colors.white, size: 30)),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(8.0),
+              //         borderSide: BorderSide(color: Colors.white, width: 4),
+              //       ),
+              //       focusedBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(8.0),
+              //         borderSide: BorderSide(color: Colors.white, width: 2),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              SearchWidget(
+                dateUid:selectedDate,
+                onDateidSelected: (String? value) {
+                  setState(() {
+                    selectedDateid = value;
+                  });
+              },
+
               ),
               Flexible(
                 child: Container(

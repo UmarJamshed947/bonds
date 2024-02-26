@@ -51,19 +51,42 @@ class ApiService{
     }
   }
 
-  Future<List<SearchBond>> fetchSearchBondData(String drawuid, String prizeBond ) async {
+  // Future<List<SearchBond>> fetchSearchBondData(String drawuid, String prizeBond ) async {
+  //
+  //   var url = Uri.parse('$Baseurl/search/single?draw_uid=$drawuid&prize_bond_number=$prizeBond');
+  //   final response = await http.post(url);
+  //   print(response.body);
+  //   print("Search Response");
+  //   if (response.statusCode == 200) {
+  //     List jsonResponse = json.decode(response.body);
+  //     return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
+  //   } else {
+  //     throw Exception('Unexpected error occured!');
+  //   }
+  // }
+  Future<List<SearchBond>> fetchSearchBondData(String drawuid, String prizeBond) async {
+    try {
+      var url = Uri.parse(Baseurl+'search/single?draw_uid=$drawuid&prize_bond_number=$prizeBond');
+      final response = await http.post(url);
 
-    var url = Uri.parse('$Baseurl/search/single?draw_uid=$drawuid&prize_bond_number=$prizeBond');
-    final response = await http.post(url);
-    print(response.body);
-    print("Search Response");
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
-    } else {
-      throw Exception('Unexpected error occured!');
+      print(response.body);
+      print("Search Response");
+
+      if (response.statusCode == 200) {
+        List jsonResponse = json.decode(response.body);
+        return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
+      } else {
+        // Handle other status codes appropriately
+        print("Error: ${response.statusCode}");
+        return []; // or throw an exception with a meaningful message
+      }
+    } catch (e) {
+      // Handle other exceptions
+      print("Error: $e");
+      return []; // or throw an exception with a meaningful message
     }
   }
+
 
 
 

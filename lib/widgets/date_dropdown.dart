@@ -2,7 +2,7 @@ import 'package:bonds/Models/Draw_Date.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:intl/intl.dart';
 
 class DateDropdown extends StatefulWidget {
@@ -65,11 +65,11 @@ class _DateDropdownState extends State<DateDropdown> {
           ],
         ),
         items: drawdate.map((DrawDate item) {
-          String formattedDate = DateFormat('dd-MM-yyyy').format(item.date);
+          // String formattedDate = DateFormat('dd-MMM-yyyy').format(item.date);
           return DropdownMenuItem<String>(
-            value: formattedDate,
+            value: item.drawUid,
             child: Text(
-              formattedDate,
+              item.date.toString(),
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -83,6 +83,7 @@ class _DateDropdownState extends State<DateDropdown> {
         onChanged: (String? value) {
           setState(() {
             selectedValue = value;
+            print("selectedValue");
             print(selectedValue);
           });
           if (value != null) {
