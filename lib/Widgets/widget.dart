@@ -38,7 +38,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
             Expanded(
               child: Text(
                 widget.buttonText,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -53,7 +53,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
           value: item,
           child: Text(
             item,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -96,14 +96,14 @@ class _DrawDropdownState extends State<DrawDropdown> {
             borderRadius: BorderRadius.circular(10),
             color: Colors.teal,
           ),
-          offset: Offset(-20, 0),
+          offset: const Offset(-20, 0),
           scrollbarTheme: ScrollbarThemeData(
-            radius: Radius.circular(40),
+            radius: const Radius.circular(40),
             thickness: MaterialStateProperty.all<double>(6),
             thumbVisibility: MaterialStateProperty.all<bool>(true),
           ),
         ),
-        menuItemStyleData: MenuItemStyleData(
+        menuItemStyleData: const MenuItemStyleData(
           height: 40,
           padding: EdgeInsets.only(left: 40, right: 14),
         ),

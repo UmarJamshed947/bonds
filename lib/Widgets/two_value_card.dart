@@ -7,13 +7,13 @@ class TwoValueCard extends StatelessWidget {
   final Color? clr;
   final Color? txtclr;
 
-  TwoValueCard(
-      {required this.text, required this.value, this.clr, this.txtclr});
+  const TwoValueCard(
+      {super.key, required this.text, required this.value, this.clr, this.txtclr});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 20),
       width: double.infinity,
       child: Card(
         elevation: 10,
@@ -29,13 +29,13 @@ class TwoValueCard extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               value,
               textAlign: TextAlign.center,
               style: GoogleFonts.nunito(
                   fontWeight: FontWeight.w500,
-                  color: txtclr ?? Color(0xFFF57D7C),
+                  color: txtclr ?? const Color(0xFFF57D7C),
                   fontSize: 16),
             ),
           ],

@@ -2,6 +2,8 @@ import 'package:bonds/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class Drawsearch extends StatefulWidget {
+  const Drawsearch({super.key});
+
   @override
   State<Drawsearch> createState() => _DrawsearchState();
 }
@@ -14,13 +16,13 @@ class _DrawsearchState extends State<Drawsearch> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.teal.shade600,
-        title: Container(
+        title: const SizedBox(
           height: 100,
           width: 100,
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_outlined,
             color: Colors.white,
           ),
@@ -35,13 +37,13 @@ class _DrawsearchState extends State<Drawsearch> {
           Expanded(
             child: Container(
               color: Colors.orangeAccent,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   Expanded(
                       child: Container(
                           color: Colors.green,
-                      child: DrawDropdown(items: [
+                      child: const DrawDropdown(items: [
                         'umar','afras','usman','ali'
                       ],
                         buttonColor: Colors.red,
@@ -60,7 +62,7 @@ class _DrawsearchState extends State<Drawsearch> {
           Expanded(
               child: Container(
             color: Colors.red,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Expanded(child: Container(color: Colors.yellow)),
@@ -71,7 +73,7 @@ class _DrawsearchState extends State<Drawsearch> {
           Expanded(
               child: Container(
             color: Colors.white,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Expanded(child: Container(color: Colors.brown)),

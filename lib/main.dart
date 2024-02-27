@@ -1,13 +1,15 @@
-import 'package:bonds/Dashboard.dart';
-
 import 'package:flutter/material.dart';
 
-void main() => runApp(Prizebonds());
+import 'Dashboard/Dashboard.dart';
+
+void main() => runApp(const Prizebonds());
 
 class Prizebonds extends StatelessWidget {
+  const Prizebonds({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Dashboard(),
     );
   }

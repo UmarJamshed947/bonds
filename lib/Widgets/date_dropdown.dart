@@ -3,13 +3,12 @@ import 'package:bonds/controller/ApiService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-import 'package:intl/intl.dart';
-
 class DateDropdown extends StatefulWidget {
   String? drawUid;
   final ValueChanged<String?> onDateSelected;
+  final List<DrawDate>? drawDates;
 
-  DateDropdown({this.drawUid, required this.onDateSelected});
+  DateDropdown({super.key, this.drawUid, required this.drawDates, required this.onDateSelected});
 
   @override
   State<DateDropdown> createState() => _DateDropdownState();
@@ -17,39 +16,31 @@ class DateDropdown extends StatefulWidget {
 
 class _DateDropdownState extends State<DateDropdown> {
   ApiService apiService = ApiService();
-  List<DrawDate> drawdate = [];
   String? selectedValue;
 
   @override
   void initState() {
     super.initState();
-
-    // print("Initial drawdate: $drawdate");
-    // print("Initial drawUid: ${widget.drawUid}");
-    //   if (widget.drawdate != null) {
-    //     drawdate = widget.drawdate!;
-    //   } else {
-    //
-    //   }
   }
 
-  Future<void> fetchData() async {
-    //print("Fetching dates for draw UID: ${widget.drawUid}");
-    if (widget.drawUid != null) {
-      drawdate = await apiService.fetchDrawDateData(widget.drawUid!);
-      //print("Fetched dates: $drawdate");
-      setState(() {});
+  @override
+  void didUpdateWidget(DateDropdown oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.drawDates != oldWidget.drawDates) {
+      setState(() {
+        selectedValue = null; // Reset selectedValue
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    fetchData();
     return Material(
       child: DropdownButtonHideUnderline(
           child: DropdownButton2<String>(
         isExpanded: true,
-        hint: Row(
+        hint: const Row(
           children: [
             Expanded(
               child: Text(
@@ -64,13 +55,13 @@ class _DateDropdownState extends State<DateDropdown> {
             ),
           ],
         ),
-        items: drawdate.map((DrawDate item) {
+        items: widget.drawDates!.map((DrawDate item) {
           // String formattedDate = DateFormat('dd-MMM-yyyy').format(item.date);
           return DropdownMenuItem<String>(
             value: item.drawUid,
             child: Text(
               item.date.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -83,8 +74,6 @@ class _DateDropdownState extends State<DateDropdown> {
         onChanged: (String? value) {
           setState(() {
             selectedValue = value;
-            print("selectedValue");
-            print(selectedValue);
           });
           if (value != null) {
             widget.onDateSelected(value);
@@ -93,7 +82,7 @@ class _DateDropdownState extends State<DateDropdown> {
         buttonStyleData: ButtonStyleData(
           height: 60,
           width: 160,
-          padding: EdgeInsets.only(left: 20, right: 14),
+          padding: const EdgeInsets.only(left: 20, right: 14),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
@@ -103,7 +92,7 @@ class _DateDropdownState extends State<DateDropdown> {
           ),
           elevation: 3,
         ),
-        iconStyleData: IconStyleData(
+        iconStyleData: const IconStyleData(
           icon: Icon(
             Icons.arrow_drop_down,
           ),
@@ -118,14 +107,14 @@ class _DateDropdownState extends State<DateDropdown> {
             borderRadius: BorderRadius.circular(10),
             color: Colors.teal,
           ),
-          offset: Offset(-20, 0),
+          offset: const Offset(-20, 0),
           scrollbarTheme: ScrollbarThemeData(
-            radius: Radius.circular(40),
+            radius: const Radius.circular(40),
             thickness: MaterialStateProperty.all<double>(6),
             thumbVisibility: MaterialStateProperty.all<bool>(true),
           ),
         ),
-        menuItemStyleData: MenuItemStyleData(
+        menuItemStyleData: const MenuItemStyleData(
           height: 40,
           padding: EdgeInsets.only(left: 40, right: 14),
         ),

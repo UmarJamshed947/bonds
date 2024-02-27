@@ -6,14 +6,14 @@ class CardWidget extends StatelessWidget {
   final IconData? icon;
   final String txt;
 
-  CardWidget({this.color, this.icon, required this.txt});
+  const CardWidget({super.key, this.color, this.icon, required this.txt});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
       color: color,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
 
       ),
@@ -30,9 +30,9 @@ class CardWidget extends StatelessWidget {
                 size: 50,
                 color: Colors.white,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Padding(
-                padding: EdgeInsets.all(2.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Text(
                   txt,
                   textAlign: TextAlign.center,

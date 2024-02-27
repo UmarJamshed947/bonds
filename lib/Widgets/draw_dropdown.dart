@@ -1,19 +1,14 @@
 import 'package:bonds/Models/Bond_Type.dart';
 import 'package:bonds/controller/ApiService.dart';
-import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Models/Draw_Date.dart';
 
 class DrawDropdown extends StatefulWidget {
 
   final ValueChanged<String?> onDrawSelected;
 
-  DrawDropdown({required this.onDrawSelected});
+  const DrawDropdown({super.key, required this.onDrawSelected});
 
 
   @override
@@ -52,7 +47,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
           isExpanded: true,
-          hint: Row(
+          hint: const Row(
             children: [
               Expanded(
                 child: Text(
@@ -72,7 +67,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
             value: item.prizeBondTypeUid,
             child: Text(
               item.name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -99,7 +94,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
           buttonStyleData: ButtonStyleData(
             height: 60,
             width: 160,
-            padding: EdgeInsets.only(left: 20, right: 14),
+            padding: const EdgeInsets.only(left: 20, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
@@ -109,7 +104,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
             ),
             elevation: 3,
           ),
-          iconStyleData: IconStyleData(
+          iconStyleData: const IconStyleData(
             icon: Icon(
               Icons.arrow_drop_down,
             ),
@@ -124,14 +119,14 @@ class _DrawDropdownState extends State<DrawDropdown> {
               borderRadius: BorderRadius.circular(10),
               color: Colors.teal,
             ),
-            offset: Offset(-20, 0),
+            offset: const Offset(-20, 0),
             scrollbarTheme: ScrollbarThemeData(
-              radius: Radius.circular(40),
+              radius: const Radius.circular(40),
               thickness: MaterialStateProperty.all<double>(6),
               thumbVisibility: MaterialStateProperty.all<bool>(true),
             ),
           ),
-          menuItemStyleData: MenuItemStyleData(
+          menuItemStyleData: const MenuItemStyleData(
             height: 40,
             padding: EdgeInsets.only(left: 40, right: 14),
           ),

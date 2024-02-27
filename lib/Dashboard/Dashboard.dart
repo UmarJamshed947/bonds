@@ -1,22 +1,33 @@
+import 'package:bonds/Models/Draw_Date.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:bonds/widgets/draw_dropdown.dart';
 import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
+
   @override
   State<Dashboard> createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-
   ApiService apiService = ApiService();
   String? selectedDrawUid;
   String? selectedDate;
-  String? selectedDateid;
+  List<DrawDate> drawDates = [];
+
+  Future<void> fetchData() async {
+    //print("Fetching dates for draw UID: ${widget.drawUid}");
+    if (selectedDrawUid != null) {
+      List<DrawDate> newDrawDates = await apiService.fetchDrawDateData(selectedDrawUid!);
+      setState(() {
+        drawDates = newDrawDates;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +35,13 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.teal.shade600,
-          title: Container(
+          title: const SizedBox(
             height: 100,
             width: 100,
           ),
           centerTitle: true,
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.menu,
               color: Colors.white,
             ),
@@ -48,7 +59,7 @@ class _DashboardState extends State<Dashboard> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -56,48 +67,48 @@ class _DashboardState extends State<Dashboard> {
                       onDrawSelected: (drawUid) {
                         setState(() {
                           selectedDrawUid = drawUid;
+                          selectedDate = null;
+                          drawDates = [];
                         });
+
+                        fetchData();
                       },
                     ),
                     DateDropdown(
                       drawUid: selectedDrawUid,
+                      drawDates: drawDates,
                       onDateSelected: (date) {
                         setState(() {
                           selectedDate = date;
+                          print("selectedValue");
+                          print(selectedDate);
                         });
                       },
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              SearchWidget(
-                dateUid: selectedDate,
-                onDateidSelected: (String? value) {
-                  setState(() {
-                    selectedDateid = value;
-                  });
-                },
-              ),
+              const SizedBox(height: 20),
+              SearchWidget(dateUid: selectedDate ?? '', prizeBondTypeUid: selectedDrawUid ?? ''),
               Flexible(
                 child: Container(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.teal.shade100,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: GridView.count(
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       crossAxisCount: 2,
                       childAspectRatio: 1.2,
-                      children: [
+                      children: const [
                         CardWidget(
                           txt: "Draw-Search",
                           icon: Icons.search,
