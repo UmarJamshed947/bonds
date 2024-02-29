@@ -1,4 +1,6 @@
 import 'package:bonds/Models/Draw_Date.dart';
+import 'package:bonds/Views/Schedule_Screen.dart';
+import 'package:bonds/Views/Security_Features.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:bonds/widgets/draw_dropdown.dart';
@@ -6,14 +8,17 @@ import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
 
+import '../Views/Draw_Search.dart';
+
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+
 
   @override
   State<Dashboard> createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
+
   ApiService apiService = ApiService();
   String? selectedDrawUid;
   String? selectedDate;
@@ -35,13 +40,13 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.teal.shade600,
-          title: const SizedBox(
+          title:  SizedBox(
             height: 100,
             width: 100,
           ),
           centerTitle: true,
           leading: IconButton(
-            icon: const Icon(
+            icon:  Icon(
               Icons.menu,
               color: Colors.white,
             ),
@@ -59,7 +64,7 @@ class _DashboardState extends State<Dashboard> {
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.only(top: 30),
+                padding:  EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -70,7 +75,6 @@ class _DashboardState extends State<Dashboard> {
                           selectedDate = null;
                           drawDates = [];
                         });
-
                         fetchData();
                       },
                     ),
@@ -88,31 +92,35 @@ class _DashboardState extends State<Dashboard> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               SearchWidget(dateUid: selectedDate ?? '', prizeBondTypeUid: selectedDrawUid ?? ''),
               Flexible(
                 child: Container(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding:  EdgeInsets.only(top: 10),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.teal.shade100,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius:  BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding:  EdgeInsets.all(32),
                     child: GridView.count(
                       mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
+                      crossAxisSpacing: 12,
                       crossAxisCount: 2,
                       childAspectRatio: 1.2,
-                      children: const [
+                      children:  [
                         CardWidget(
                           txt: "Draw-Search",
                           icon: Icons.search,
                           color: Colors.teal,
+                          onTap: () {
+                            print("Draw-Search card tapped");
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Drawsearch()));
+                          },
                           //color: Color(0xFF2ECC71), // Green
                         ),
                         CardWidget(
@@ -125,12 +133,20 @@ class _DashboardState extends State<Dashboard> {
                           txt: "Schedules",
                           icon: Icons.event,
                           color: Colors.teal,
+                          onTap: () {
+                            print("Draw-Search card tapped");
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleScreen()));
+                          },
                           // color: Color(0xFFE67E22), // Orange
                         ),
                         CardWidget(
                           txt: "Sec-Features",
                           icon: Icons.security,
                           color: Colors.teal,
+                          onTap: () {
+                            print("Draw-Search card tapped");
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SecurityFeatures()));
+                          },
                           // color: Color(0xFF9B59B6), // Purple
                         ),
                         CardWidget(

@@ -2,13 +2,18 @@ import 'package:bonds/Models/Draw_Date.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DateDropdown extends StatefulWidget {
   String? drawUid;
   final ValueChanged<String?> onDateSelected;
   final List<DrawDate>? drawDates;
 
-  DateDropdown({super.key, this.drawUid, required this.drawDates, required this.onDateSelected});
+  DateDropdown(
+      {super.key,
+      this.drawUid,
+      required this.drawDates,
+      required this.onDateSelected});
 
   @override
   State<DateDropdown> createState() => _DateDropdownState();
@@ -56,11 +61,11 @@ class _DateDropdownState extends State<DateDropdown> {
           ],
         ),
         items: widget.drawDates!.map((DrawDate item) {
-          // String formattedDate = DateFormat('dd-MMM-yyyy').format(item.date);
+          String formattedDate = DateFormat('dd-MM-yyyy').format(item.date);
           return DropdownMenuItem<String>(
             value: item.drawUid,
             child: Text(
-              item.date.toString(),
+              formattedDate,
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -84,7 +89,7 @@ class _DateDropdownState extends State<DateDropdown> {
           width: 160,
           padding: const EdgeInsets.only(left: 20, right: 14),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(0),
             border: Border.all(
               color: Colors.white,
             ),
@@ -102,12 +107,10 @@ class _DateDropdownState extends State<DateDropdown> {
         ),
         dropdownStyleData: DropdownStyleData(
           maxHeight: 180,
-          width: 180,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.teal,
           ),
-          offset: const Offset(-20, 0),
           scrollbarTheme: ScrollbarThemeData(
             radius: const Radius.circular(40),
             thickness: MaterialStateProperty.all<double>(6),

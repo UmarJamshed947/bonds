@@ -6,9 +6,10 @@ import '../Views/Search_Result.dart';
 import '../controller/ApiService.dart';
 
 class SearchWidget extends StatefulWidget {
+
   final String dateUid, prizeBondTypeUid;
 
-  const SearchWidget(
+  SearchWidget(
       {super.key, required this.dateUid, required this.prizeBondTypeUid});
 
   @override
@@ -16,38 +17,54 @@ class SearchWidget extends StatefulWidget {
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
+
+  // Controller for handling text input
   final TextEditingController _searchController = TextEditingController();
 
+  // Function for searching data
   Future<void> searchdata(
       String prizeBondTypeUid, String drawuid, String prizeBond) async {
     print("Fetching UID: $drawuid");
     print("Fetching textD: $prizeBond");
     if (widget.dateUid != null) {
+      // Fetching search data using ApiService
       searchdate = await apiService.fetchSearchBondData(
           prizeBondTypeUid, drawuid, prizeBond);
       print("Fetched dates: $searchdate");
     }
   }
 
+  // Instance of ApiService for making API calls
   ApiService apiService = ApiService();
+  // List to store the search results
   List<SearchBond> searchdate = [];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       height: 100,
       width: 410,
       child: TextField(
         controller: _searchController,
         decoration: InputDecoration(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-          hintText: 'Search draw numbers',
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: Colors.white, width: 4),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: Colors.white, width: 2),
+          ),
+          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          //hintText: 'Search draw numbers',
           labelText: "Search Numbers",
-          labelStyle: const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Colors.white),
           hintStyle: GoogleFonts.nunito(color: Colors.white),
-          prefixIcon: const Icon(Icons.search, color: Colors.white),
+          prefixIcon: Icon(Icons.search, color: Colors.white),
           suffixIcon: GestureDetector(
             onTap: () async {
               searchdata(widget.prizeBondTypeUid, widget.dateUid,
@@ -64,16 +81,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
               );
             },
-            child: const Icon(Icons.arrow_circle_right_outlined,
+            child: Icon(Icons.arrow_circle_right_outlined,
                 color: Colors.white, size: 30),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: const BorderSide(color: Colors.white, width: 4),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: const BorderSide(color: Colors.white, width: 2),
           ),
         ),
       ),

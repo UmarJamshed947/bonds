@@ -96,7 +96,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
             width: 160,
             padding: const EdgeInsets.only(left: 20, right: 14),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(0),
               border: Border.all(
                 color: Colors.white,
               ),
@@ -114,12 +114,11 @@ class _DrawDropdownState extends State<DrawDropdown> {
           ),
           dropdownStyleData: DropdownStyleData(
             maxHeight: 180,
-            width: 180,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.teal,
             ),
-            offset: const Offset(-20, 0),
+            //offset: const Offset(-20, 0),
             scrollbarTheme: ScrollbarThemeData(
               radius: const Radius.circular(40),
               thickness: MaterialStateProperty.all<double>(6),
