@@ -39,42 +39,96 @@ class _DateDropdownState extends State<DateDropdown> {
     }
   }
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Material(
+  //     child: DropdownButtonHideUnderline(
+  //         child: DropdownButton2<String>(
+  //       isExpanded: true,
+  //       hint:  Row(
+  //         children: [
+  //           Text(
+  //             'Select Date',
+  //             style: TextStyle(
+  //               fontSize: 14,
+  //               fontWeight: FontWeight.bold,
+  //               color: Colors.white,
+  //             ),
+  //             //overflow: TextOverflow.ellipsis,
+  //           ),
+  //
+  //         ],
+  //       ),
+  //       items: widget.drawDates!.map((DrawDate item) {
+  //         String formattedDate = DateFormat('dd-MMM-yyyy').format(item.date);
+  //         return DropdownMenuItem<String>(
+  //           value: item.drawUid,
+  //           child: Text(
+  //             formattedDate,
+  //             style:  TextStyle(
+  //               fontSize: 14,
+  //               fontWeight: FontWeight.bold,
+  //               color: Colors.white,
+  //             ),
+  //             //overflow: TextOverflow.ellipsis,
+  //           ),
+  //         );
+  //       }).toList(),
+  //       value: selectedValue,
+  //       onChanged: (String? value) {
+  //         setState(() {
+  //           selectedValue = value;
+  //         });
+  //         if (value != null) {
+  //           widget.onDateSelected(value);
+  //         }
+  //       },
   @override
   Widget build(BuildContext context) {
     return Material(
       child: DropdownButtonHideUnderline(
           child: DropdownButton2<String>(
         isExpanded: true,
-        hint: const Row(
+        hint: Row(
           children: [
-            Expanded(
+            Text(
+              'Select Date',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+        items: [
+          DropdownMenuItem<String>(
+            value: 'ALL',
+            child: Text(
+              'Select ALL',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          // Add the drawDates items
+          ...widget.drawDates!.map((DrawDate item) {
+            String formattedDate = DateFormat('dd-MMM-yyyy').format(item.date);
+            return DropdownMenuItem<String>(
+              value: item.drawUid,
               child: Text(
-                'Select Date',
+                formattedDate,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
-                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
-        ),
-        items: widget.drawDates!.map((DrawDate item) {
-          String formattedDate = DateFormat('dd-MM-yyyy').format(item.date);
-          return DropdownMenuItem<String>(
-            value: item.drawUid,
-            child: Text(
-              formattedDate,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
-          );
-        }).toList(),
+            );
+          }),
+        ],
         value: selectedValue,
         onChanged: (String? value) {
           setState(() {
@@ -87,7 +141,7 @@ class _DateDropdownState extends State<DateDropdown> {
         buttonStyleData: ButtonStyleData(
           height: 60,
           width: 160,
-          padding: const EdgeInsets.only(left: 20, right: 14),
+          padding:  EdgeInsets.only(left: 20, right: 14),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(0),
             border: Border.all(
@@ -97,7 +151,7 @@ class _DateDropdownState extends State<DateDropdown> {
           ),
           elevation: 3,
         ),
-        iconStyleData: const IconStyleData(
+        iconStyleData:  IconStyleData(
           icon: Icon(
             Icons.arrow_drop_down,
           ),
@@ -112,7 +166,7 @@ class _DateDropdownState extends State<DateDropdown> {
             color: Colors.teal,
           ),
           scrollbarTheme: ScrollbarThemeData(
-            radius: const Radius.circular(40),
+            radius:  Radius.circular(40),
             thickness: MaterialStateProperty.all<double>(6),
             thumbVisibility: MaterialStateProperty.all<bool>(true),
           ),

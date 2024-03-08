@@ -1,19 +1,22 @@
+import 'package:bonds/Models/Range_Search.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../Models/Search_Bond.dart';
 
-class SearchResult extends StatelessWidget {
-  late final String drawuid;
-  late final String prizeBond;
-  late final String prizeBondTypeUid;
+class RangeSearchResult extends StatelessWidget {
+  String drawUid;
+  int firstNumber;
+  int lastNumber;
 
-  SearchResult(
-      {super.key,
-      required this.prizeBondTypeUid,
-      required this.drawuid,
-      required this.prizeBond});
+  // Constructor to initialize parameters
+  RangeSearchResult({
+    required this.drawUid,
+    required this.firstNumber,
+    required this.lastNumber,
+  });
+
 
   final ApiService apiService = ApiService();
 
@@ -26,9 +29,8 @@ class SearchResult extends StatelessWidget {
       ),
       body: Container(
         color: Colors.teal,
-        child: FutureBuilder<List<SearchBond>>(
-          future: apiService.fetchSearchBondData(
-              prizeBondTypeUid, drawuid, prizeBond),
+        child: FutureBuilder<List<RangeSearch>>(
+          future: apiService.fetchRangeSearchData(drawUid,firstNumber,lastNumber),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return  Center(
@@ -43,11 +45,11 @@ class SearchResult extends StatelessWidget {
                 child: Text('No results found.'),
               );
             } else {
-              List<SearchBond> searchResults = snapshot.data!;
+              List<RangeSearch> searchResults = snapshot.data!;
               return ListView.builder(
                 itemCount: searchResults.length,
                 itemBuilder: (context, index) {
-                  SearchBond searchBond = searchResults[index];
+                  RangeSearch rangeSearch = searchResults[index];
                   return Padding(
                     padding:  EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
@@ -63,21 +65,21 @@ class SearchResult extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                   Text(
+                                  Text(
                                     'Prize Category:',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.blue, // Set your desired color
+                                      Colors.blue, // Set your desired color
                                     ),
                                   ),
-                                   SizedBox(width: 20),
+                                  SizedBox(width: 20),
                                   Text(
-                                    searchBond.prize,
+                                    rangeSearch.prize,
                                     style:  TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.red, // Set your desired color
+                                      Colors.red, // Set your desired color
                                     ),
                                   ),
                                 ],
@@ -85,21 +87,21 @@ class SearchResult extends StatelessWidget {
                               SizedBox(height: 8),
                               Row(
                                 children: [
-                                   Text(
+                                  Text(
                                     'Bond Number:',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.blue, // Set your desired color
+                                      Colors.blue, // Set your desired color
                                     ),
                                   ),
-                                   SizedBox(width: 26),
+                                  SizedBox(width: 26),
                                   Text(
-                                    searchBond.prizeBondNumber,
+                                    rangeSearch.prizeBondNumber,
                                     style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.red, // Set your desired color
+                                      Colors.red, // Set your desired color
                                     ),
                                   ),
                                 ],
@@ -112,43 +114,43 @@ class SearchResult extends StatelessWidget {
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.blue, // Set your desired color
+                                      Colors.blue, // Set your desired color
                                     ),
                                   ),
-                                   SizedBox(width: 28),
+                                  SizedBox(width: 28),
                                   Text(
-                                    '${searchBond.prizeAmount}',
+                                    '${rangeSearch.prizeAmount}',
                                     style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.red, // Set your desired color
+                                      Colors.red, // Set your desired color
                                     ),
                                   ),
                                 ],
                               ),
-                               SizedBox(height: 8),
+                              SizedBox(height: 8),
                               Row(
                                 children: [
-                                   Text(
+                                  Text(
                                     'Draw Place:',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.blue, // Set your desired color
+                                      Colors.blue, // Set your desired color
                                     ),
                                   ),
-                                 SizedBox(width: 42),
+                                  SizedBox(width: 42),
                                   Text(
-                                    searchBond.heldAt,
+                                    rangeSearch.heldAt,
                                     style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.red, // Set your desired color
+                                      Colors.red, // Set your desired color
                                     ),
                                   ),
                                 ],
                               ),
-                             SizedBox(height: 8),
+                              SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(
@@ -156,39 +158,39 @@ class SearchResult extends StatelessWidget {
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.blue, // Set your desired color
+                                      Colors.blue, // Set your desired color
                                     ),
                                   ),
-                                   SizedBox(width: 28),
+                                  SizedBox(width: 28),
                                   Text(
-                                    searchBond.drawNumber,
+                                    rangeSearch.drawNumber,
                                     style: const TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.red, // Set your desired color
+                                      Colors.red, // Set your desired color
                                     ),
                                   ),
                                 ],
                               ),
-                               SizedBox(height: 8),
+                              SizedBox(height: 8),
                               Row(
                                 children: [
-                                   Text(
+                                  Text(
                                     'Draw Date:',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.blue, // Set your desired color
+                                      Colors.blue, // Set your desired color
                                     ),
                                   ),
-                                 SizedBox(width: 48),
+                                  SizedBox(width: 48),
                                   Text(
                                     DateFormat('dd MMMM yyyy')
-                                        .format(searchBond.drawDate),
+                                        .format(rangeSearch.drawDate),
                                     style:  TextStyle(
                                       fontFamily: 'Poppins',
                                       color:
-                                          Colors.red, // Set your desired color
+                                      Colors.red, // Set your desired color
                                     ),
                                   ),
                                 ],

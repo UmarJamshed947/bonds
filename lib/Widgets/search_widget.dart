@@ -10,7 +10,7 @@ class SearchWidget extends StatefulWidget {
   final String dateUid, prizeBondTypeUid;
 
   SearchWidget(
-      {super.key, required this.dateUid, required this.prizeBondTypeUid});
+      {super.key,  required this.dateUid,  required this.prizeBondTypeUid});
 
   @override
   _SearchWidgetState createState() => _SearchWidgetState();
@@ -46,6 +46,8 @@ class _SearchWidgetState extends State<SearchWidget> {
       height: 100,
       width: 410,
       child: TextField(
+        style: TextStyle(color: Colors.white),
+        cursorColor: Colors.white,
         controller: _searchController,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -63,6 +65,7 @@ class _SearchWidgetState extends State<SearchWidget> {
           //hintText: 'Search draw numbers',
           labelText: "Search Numbers",
           labelStyle: TextStyle(color: Colors.white),
+
           hintStyle: GoogleFonts.nunito(color: Colors.white),
           prefixIcon: Icon(Icons.search, color: Colors.white),
           suffixIcon: GestureDetector(

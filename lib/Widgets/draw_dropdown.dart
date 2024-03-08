@@ -94,7 +94,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
           buttonStyleData: ButtonStyleData(
             height: 60,
             width: 160,
-            padding: const EdgeInsets.only(left: 20, right: 14),
+            padding:  EdgeInsets.only(left: 20, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(0),
               border: Border.all(
@@ -104,7 +104,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
             ),
             elevation: 3,
           ),
-          iconStyleData: const IconStyleData(
+          iconStyleData:  IconStyleData(
             icon: Icon(
               Icons.arrow_drop_down,
             ),
@@ -120,12 +120,12 @@ class _DrawDropdownState extends State<DrawDropdown> {
             ),
             //offset: const Offset(-20, 0),
             scrollbarTheme: ScrollbarThemeData(
-              radius: const Radius.circular(40),
+              radius: Radius.circular(40),
               thickness: MaterialStateProperty.all<double>(6),
               thumbVisibility: MaterialStateProperty.all<bool>(true),
             ),
           ),
-          menuItemStyleData: const MenuItemStyleData(
+          menuItemStyleData:  MenuItemStyleData(
             height: 40,
             padding: EdgeInsets.only(left: 40, right: 14),
           ),

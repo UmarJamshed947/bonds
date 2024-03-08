@@ -7,8 +7,10 @@ import 'package:bonds/widgets/draw_dropdown.dart';
 import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../Views/Draw_Search.dart';
+import '../Widgets/web_view.dart';
 
 class Dashboard extends StatefulWidget {
 
@@ -18,6 +20,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  WebViewController? _webViewController;
 
   ApiService apiService = ApiService();
   String? selectedDrawUid;
@@ -32,6 +35,16 @@ class _DashboardState extends State<Dashboard> {
         drawDates = newDrawDates;
       });
     }
+  }
+
+  // Function to open a WebView for a given URL
+  void openWebView(String url) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WebViewScreen(initialUrl: url),
+      ),
+    );
   }
 
   @override
@@ -96,7 +109,7 @@ class _DashboardState extends State<Dashboard> {
               SearchWidget(dateUid: selectedDate ?? '', prizeBondTypeUid: selectedDrawUid ?? ''),
               Flexible(
                 child: Container(
-                  padding:  EdgeInsets.only(top: 10),
+                  //padding:  EdgeInsets.only(top: 5),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.teal.shade100,
@@ -106,7 +119,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   child: Padding(
-                    padding:  EdgeInsets.all(32),
+                    padding:  EdgeInsets.all(25),
                     child: GridView.count(
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 12,
@@ -127,6 +140,10 @@ class _DashboardState extends State<Dashboard> {
                           txt: "Downloads",
                           icon: Icons.file_download,
                           color: Colors.teal,
+                          onTap: (){
+                            print("Downloads card tapped");
+                            openWebView('https://savings.gov.pk/prize-bonds/'); // Replace with your URL
+                          },
                           // color: Color(0xFF3498DB), // Blue
                         ),
                         CardWidget(
