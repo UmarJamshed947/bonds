@@ -9,7 +9,6 @@ import '../Models/Search_Bond.dart';
 class ApiService {
   final bool _loading = false;
   bool get loading => _loading;
-
   String Baseurl = 'https://prizebond.idev.im/api/v1/';
 
   Future<List<BondType>> fetchBondTypeData() async {
@@ -20,47 +19,6 @@ class ApiService {
       return jsonResponse.map((data) => BondType.fromJson(data)).toList();
     } else {
       throw Exception('Unexpected error occured!');
-    }
-  }
-
-  //////////////////////////////////////////////////////////////////////////////////////////
-  Future<List<RangeSearch>> fetchRangeSearchData(String drawUid, int firstNumber, int lastNumber) async {
-    final url = Uri.parse('https://prizebond.idev.im/api/v1/search/range');
-
-    // Headers
-    Map<String, String> headers = {
-      'Accept': 'application/json',
-    };
-
-    // Body
-    Map<String, dynamic> body = {
-      'draw_uid': drawUid,
-      'prize_bond_number_first': firstNumber.toString(),
-      'prize_bond_number_last': lastNumber.toString(),
-    };
-
-    try {
-      final response = await http.post(
-        url,
-        headers: headers,
-        body: body,
-      );
-
-      if (response.statusCode == 200) {
-        // If the server returns a 200 OK response, parse the JSON
-        final List<dynamic> jsonData = json.decode(response.body);
-        List<RangeSearch> result = jsonData.map((data) => RangeSearch.fromJson(data)).toList();
-        return result;
-      } else {
-        // If the server did not return a 200 OK response,
-        // throw an exception.
-        print('Non-200 status code. Response body: ${response.body}');
-        throw Exception('Failed to load dataaaaaa');
-      }
-    } catch (error) {
-      // Handle network or decoding errors
-      print('Error: $error');
-      throw Exception('Failed to load data. Error: $error');
     }
   }
 
@@ -83,21 +41,7 @@ class ApiService {
     }
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////
-  // Future<List<SearchBond>> fetchSearchBondData(String drawuid, String prizeBond ) async {
-  //
-  //   var url = Uri.parse('$Baseurl/search/single?draw_uid=$drawuid&prize_bond_number=$prizeBond');
-  //   final response = await http.post(url);
-  //   print(response.body);
-  //   print("Search Response");
-  //   if (response.statusCode == 200) {
-  //     List jsonResponse = json.decode(response.body);
-  //     return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
-  //   } else {
-  //     throw Exception('Unexpected error occured!');
-  //   }
-  // }
-
+  ///////////////////////////////////////////////////////////////////////////////////////////
   Future<List<SearchBond>> fetchSearchBondData(
       String prizeBondTypeUid, String drawuid, String prizeBond) async {
     // If drawuid is 'ALL', treat it as an empty string
@@ -125,9 +69,76 @@ class ApiService {
     } else {
       // Handle other status codes appropriately
       print("Error: ${response.statusCode}");
-      return []; // or throw an exception with a meaningful message
+      return [];
     }
   }
+
+  //////////////////////////////////////////////////////////////////////////////////////////
+  Future<List<RangeSearch>> fetchRangeSearchData(String drawUid,  int firstNumber, int lastNumber, String prizeBondTypeUid) async {
+   // drawUid = (drawUid == 'ALL') ? '' : drawUid;
+    prizeBondTypeUid = (prizeBondTypeUid == 'ALL') ? '' : prizeBondTypeUid;
+    final url = Uri.parse('https://prizebond.idev.im/api/v1/search/range');
+
+    // Headers
+    Map<String, String> headers = {
+      'Accept': 'application/json',
+    };
+    print("drawUid");
+    print(drawUid);
+    print("prizeBondTypeUid");
+    print(prizeBondTypeUid);
+
+    // Body
+    Map<String, dynamic> body = {
+      'prize_bond_number_first': firstNumber.toString(),
+      'prize_bond_number_last': lastNumber.toString(),
+      'prize_bond_type_uid': drawUid,
+    };
+    if (prizeBondTypeUid.isNotEmpty) {
+      body['draw_uid'] = prizeBondTypeUid;
+    }
+
+    try {
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+      if (response.statusCode == 200) {
+        // If the server returns a 200 OK response, parse the JSON
+        final List<dynamic> jsonData = json.decode(response.body);
+        List<RangeSearch> result = jsonData.map((data) => RangeSearch.fromJson(data)).toList();
+        return result;
+      } else {
+        // If the server did not return a 200 OK response,
+        // throw an exception with detailed error message
+        print('Non-200 status code. Response body: ${response.body}');
+        throw Exception('Failed to load data. Server returned status code ${response.statusCode}.');
+      }
+    } catch (error) {
+      // Handle network or decoding errors
+      print('Error: $error');
+      throw Exception('Failed to load data. Error: $error');
+    }
+  }
+
+
+  //////////////////////////////////////////////////////////////////////////////////////////
+  // Future<List<SearchBond>> fetchSearchBondData(String drawuid, String prizeBond ) async {
+  //
+  //   var url = Uri.parse('$Baseurl/search/single?draw_uid=$drawuid&prize_bond_number=$prizeBond');
+  //   final response = await http.post(url);
+  //   print(response.body);
+  //   print("Search Response");
+  //   if (response.statusCode == 200) {
+  //     List jsonResponse = json.decode(response.body);
+  //     return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
+  //   } else {
+  //     throw Exception('Unexpected error occured!');
+  //   }
+  // }
+
+
 
   Future<http.Response> postApiCall({required Uri url, required var body}) async {
     try {

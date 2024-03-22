@@ -23,6 +23,7 @@ class _DrawsearchState extends State<Drawsearch> {
   ApiService apiService = ApiService();
   String? selectedDrawUid;
   String? selectedDate;
+  String? prizeBondTypeUid;
   List<DrawDate> drawDates = [];
 
   Future<void> fetchData() async {
@@ -60,7 +61,7 @@ class _DrawsearchState extends State<Drawsearch> {
   TextEditingController _fromRangeController = TextEditingController();
   TextEditingController _toRangeController = TextEditingController();
   TextEditingController _randomRangeController = TextEditingController();
-  final RoundedLoadingButtonController _searchBtnController = RoundedLoadingButtonController();
+ // final RoundedLoadingButtonController _searchBtnController = RoundedLoadingButtonController();
 
 
   int selectedRadio = 0;
@@ -111,6 +112,8 @@ class _DrawsearchState extends State<Drawsearch> {
                           selectedDrawUid = drawUid;
                           selectedDate = null;
                           drawDates = [];
+                          print("selectedbond");
+                          print(drawUid);
                         });
                         fetchData();
                       },
@@ -344,14 +347,17 @@ class _DrawsearchState extends State<Drawsearch> {
               // controller: _searchBtnController,
               onPressed: () {
 
-               // searchdata();
+               //searchdata();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => RangeSearchResult(
-                      drawUid: selectedDate.toString(),
+                      //drawUid: selectedDate.toString(),
+                      drawUid: selectedDrawUid!,
                       firstNumber: int.parse(_fromRangeController.text.trim() .toString()),
                       lastNumber:  int.parse(_toRangeController.text.trim() .toString()),
+                      //prizeBondTypeUid: selectedDrawUid!,
+                      prizeBondTypeUid: selectedDate.toString(),
 
                     ),
                   ),

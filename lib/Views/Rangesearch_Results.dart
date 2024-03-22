@@ -7,14 +7,17 @@ import '../Models/Search_Bond.dart';
 
 class RangeSearchResult extends StatelessWidget {
   String drawUid;
+
   int firstNumber;
   int lastNumber;
+  String prizeBondTypeUid;
 
   // Constructor to initialize parameters
   RangeSearchResult({
     required this.drawUid,
     required this.firstNumber,
     required this.lastNumber,
+    required this.prizeBondTypeUid
   });
 
 
@@ -30,7 +33,7 @@ class RangeSearchResult extends StatelessWidget {
       body: Container(
         color: Colors.teal,
         child: FutureBuilder<List<RangeSearch>>(
-          future: apiService.fetchRangeSearchData(drawUid,firstNumber,lastNumber),
+          future: apiService.fetchRangeSearchData(drawUid, firstNumber, lastNumber,    prizeBondTypeUid, ),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return  Center(
