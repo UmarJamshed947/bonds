@@ -5,14 +5,14 @@ import 'package:intl/intl.dart';
 import '../Models/Search_Bond.dart';
 
 class SearchResult extends StatelessWidget {
-  late final String drawuid;
+  late final String drawDateUid;
   late final String prizeBond;
   late final String prizeBondTypeUid;
 
   SearchResult(
       {super.key,
       required this.prizeBondTypeUid,
-      required this.drawuid,
+      required this.drawDateUid,
       required this.prizeBond});
 
   final ApiService apiService = ApiService();
@@ -28,7 +28,7 @@ class SearchResult extends StatelessWidget {
         color: Colors.teal,
         child: FutureBuilder<List<SearchBond>>(
           future: apiService.fetchSearchBondData(
-              prizeBondTypeUid, drawuid, prizeBond),
+              prizeBondTypeUid, drawDateUid, prizeBond),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return  Center(

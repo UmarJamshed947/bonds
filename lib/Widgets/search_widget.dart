@@ -78,7 +78,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 MaterialPageRoute(
                   builder: (context) => SearchResult(
                     prizeBondTypeUid: widget.prizeBondTypeUid,
-                    drawuid: widget.dateUid,
+                    drawDateUid: widget.dateUid,
                     prizeBond: _searchController.text.trim(),
                   ),
                 ),
