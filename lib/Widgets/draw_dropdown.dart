@@ -3,20 +3,16 @@ import 'package:bonds/controller/ApiService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-
 class DrawDropdown extends StatefulWidget {
-
   final ValueChanged<String?> onDrawSelected;
 
   const DrawDropdown({super.key, required this.onDrawSelected});
-
 
   @override
   State<DrawDropdown> createState() => _DrawDropdownState();
 }
 
 class _DrawDropdownState extends State<DrawDropdown> {
-
   ApiService apiService = ApiService();
   List<BondType> bondTypes = [];
   String? selectedValue;
@@ -39,7 +35,6 @@ class _DrawDropdownState extends State<DrawDropdown> {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   prefs.setString('selectedDrawUid', drawUid);
   // }
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,17 +59,17 @@ class _DrawDropdownState extends State<DrawDropdown> {
           ),
           items: bondTypes
               .map((BondType item) => DropdownMenuItem<String>(
-            value: item.prizeBondTypeUid,
-            child: Text(
-              item.name,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ))
+                    value: item.prizeBondTypeUid,
+                    child: Text(
+                      item.name,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ))
               .toList(),
           value: selectedValue,
           onChanged: (String? value) async {
@@ -86,15 +81,11 @@ class _DrawDropdownState extends State<DrawDropdown> {
               // Pass the selected draw UID to the DateDropdown widget
               widget.onDrawSelected(value);
             }
-
-
-
-
           },
           buttonStyleData: ButtonStyleData(
             height: 60,
             width: 160,
-            padding:  EdgeInsets.only(left: 20, right: 14),
+            padding: EdgeInsets.only(left: 20, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(0),
               border: Border.all(
@@ -104,7 +95,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
             ),
             elevation: 3,
           ),
-          iconStyleData:  IconStyleData(
+          iconStyleData: IconStyleData(
             icon: Icon(
               Icons.arrow_drop_down,
             ),
@@ -125,7 +116,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
               thumbVisibility: MaterialStateProperty.all<bool>(true),
             ),
           ),
-          menuItemStyleData:  MenuItemStyleData(
+          menuItemStyleData: MenuItemStyleData(
             height: 40,
             padding: EdgeInsets.only(left: 40, right: 14),
           ),

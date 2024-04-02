@@ -62,13 +62,13 @@ class ApiService {
     }
 
     final response = await postApiCall(url: url, body: body);
-
+    print("respone code:  ${response.statusCode}");
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
       return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
     } else {
       // Handle other status codes appropriately
-      print("Error: ${response.statusCode}");
+      print("Error bbb: ${response.statusCode}");
       return [];
     }
   }

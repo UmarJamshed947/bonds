@@ -27,8 +27,7 @@ class SearchResult extends StatelessWidget {
       body: Container(
         color: Colors.teal,
         child: FutureBuilder<List<SearchBond>>(
-          future: apiService.fetchSearchBondData(
-              prizeBondTypeUid, drawDateUid, prizeBond),
+          future: apiService.fetchSearchBondData(prizeBondTypeUid, drawDateUid, prizeBond),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return  Center(

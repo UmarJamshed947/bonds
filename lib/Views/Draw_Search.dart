@@ -25,9 +25,9 @@ class _DrawsearchState extends State<Drawsearch> {
 
   Future<void> fetchData() async {
     //print("Fetching dates for draw UID: ${widget.drawUid}");
-    if (drawDateUid != null) {
+    if (bondTypeUid != null) {
       List<DrawDate> newDrawDates =
-          await apiService.fetchDrawDateData(drawDateUid!);
+          await apiService.fetchDrawDateData(bondTypeUid!);
       setState(() {
         drawDates = newDrawDates;
       });
@@ -55,16 +55,16 @@ class _DrawsearchState extends State<Drawsearch> {
   }*/
 
 
-  Future<List<SearchBond>> searchdata(
-      String prizeBondTypeUid, String drawuid, String prizeBond) async {
-    print("Fetching UID: $drawuid");
-    print("Fetching textD: $prizeBond");
-    if (drawuid != null && prizeBond != null) {
-      return apiService.fetchSearchBondData(prizeBondTypeUid, drawuid, prizeBond);
-    } else {
-      return [];
-    }
-  }
+  // Future<List<SearchBond>> searchdata(
+  //     String prizeBondTypeUid, String drawuid, String prizeBond) async {
+  //   print("Fetching UID: $drawuid");
+  //   print("Fetching textD: $prizeBond");
+  //   if (drawuid != null && prizeBond != null) {
+  //     return apiService.fetchSearchBondData(prizeBondTypeUid, drawuid, prizeBond);
+  //   } else {
+  //     return [];
+  //   }
+  // }
 
   TextEditingController _fromRangeController = TextEditingController();
   TextEditingController _toRangeController = TextEditingController();
@@ -113,11 +113,10 @@ class _DrawsearchState extends State<Drawsearch> {
                     child: DrawDropdown(
                       onDrawSelected: (drawUid) {
                         setState(() {
-                          drawDateUid = drawUid;
-                          bondTypeUid = null;
+                          bondTypeUid = drawUid;
                           drawDates = [];
-                          print("selectedbond");
-                          print(drawUid);
+                          print("selected bondtype");
+                          print(bondTypeUid);
                         });
                         fetchData();
                       },
@@ -132,9 +131,9 @@ class _DrawsearchState extends State<Drawsearch> {
                       drawDates: drawDates,
                       onDateSelected: (date) {
                         setState(() {
-                          bondTypeUid = date;
-                          print("selectedValue");
-                          print(bondTypeUid);
+                          drawDateUid = date;
+                          print("selectedValue date dropdown");
+                          print(drawDateUid);
                         });
                       },
                     ),
@@ -395,6 +394,8 @@ class _DrawsearchState extends State<Drawsearch> {
             MaterialButton(
               color: Colors.teal.shade900,
               onPressed: () async {
+                print("custom check dduid: ${drawDateUid}");
+                print("custom check btuid: ${bondTypeUid}");
                 if (selectedRadio == 0) {
                   // Perform range search
                   Navigator.push(
@@ -414,15 +415,15 @@ class _DrawsearchState extends State<Drawsearch> {
                   String prizeBond = _randomRangeController.text.trim();
                   if (prizeBond.isNotEmpty) {
                     // Call the searchdata function
-                    List<SearchBond> searchResults = await searchdata(prizeBondTypeUid, drawDateUid!, prizeBond);
+                    //List<SearchBond> searchResults = await searchdata(prizeBondTypeUid, drawDateUid!, prizeBond);
                     // Handle the search results
 
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => SearchResult(
-                          prizeBondTypeUid: drawDateUid!,
-                          drawDateUid: prizeBondTypeUid,
+                          prizeBondTypeUid: prizeBondTypeUid,
+                          drawDateUid: drawDateUid!,
                           prizeBond: prizeBond,
                         ),
                       ),
