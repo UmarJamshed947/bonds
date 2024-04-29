@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../Models/Search_Bond.dart';
+import '../Widgets/customtext.dart';
 
 class SearchResult extends StatelessWidget {
   late final String drawDateUid;
@@ -22,15 +23,27 @@ class SearchResult extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade600,
-        title:  Text('Search Results'),
+        title: CustomText(txt: 'Search Result', fntSize: 18),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_outlined,
+            color: Colors.white,
+          ),
+          color: Colors.black,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
       body: Container(
         color: Colors.teal,
         child: FutureBuilder<List<SearchBond>>(
-          future: apiService.fetchSearchBondData(prizeBondTypeUid, drawDateUid, prizeBond),
+          future: apiService.fetchSearchBondData(
+              prizeBondTypeUid, drawDateUid, prizeBond),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return  Center(
+              return Center(
                 child: CircularProgressIndicator(),
               );
             } else if (snapshot.hasError) {
@@ -38,7 +51,7 @@ class SearchResult extends StatelessWidget {
                 child: Text('Error: ${snapshot.error}'),
               );
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return  Center(
+              return Center(
                 child: Text('No results found.'),
               );
             } else {
@@ -48,147 +61,93 @@ class SearchResult extends StatelessWidget {
                 itemBuilder: (context, index) {
                   SearchBond searchBond = searchResults[index];
                   return Padding(
-                    padding:  EdgeInsets.only(top: 15, left: 5, right: 5),
+                    padding: EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
-                      color: Colors.teal.shade100,
+                      color: Colors.teal.shade400,
                       elevation: 4,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
-                          padding:  EdgeInsets.all(16),
+                          padding: EdgeInsets.all(16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                   Text(
-                                    'Prize Category:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Prize Category:',
                                   ),
-                                   SizedBox(width: 20),
-                                  Text(
-                                    searchBond.prize,
-                                    style:  TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.red, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: searchBond.prize,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                   Text(
-                                    'Bond Number:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Bond Number:',
                                   ),
-                                   SizedBox(width: 26),
-                                  Text(
-                                    searchBond.prizeBondNumber,
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.red, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: searchBond.prizeBondNumber,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Prize Amount:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Prize Amount:',
                                   ),
-                                   SizedBox(width: 28),
-                                  Text(
-                                    '${searchBond.prizeAmount}',
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.red, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: '${searchBond.prizeAmount}',
                                   ),
                                 ],
                               ),
-                               SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                   Text(
-                                    'Draw Place:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Draw Place:',
                                   ),
-                                 SizedBox(width: 42),
-                                  Text(
-                                    searchBond.heldAt,
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.red, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: searchBond.heldAt,
                                   ),
                                 ],
                               ),
-                             SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Draw Number:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Draw Number:',
                                   ),
-                                   SizedBox(width: 28),
-                                  Text(
-                                    searchBond.drawNumber,
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.red, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: searchBond.drawNumber,
                                   ),
                                 ],
                               ),
-                               SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                   Text(
-                                    'Draw Date:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Draw Date:',
                                   ),
-                                 SizedBox(width: 48),
-                                  Text(
-                                    DateFormat('dd MMMM yyyy')
+                                  CustomText(
+                                    txt: DateFormat('dd MMMM yyyy')
                                         .format(searchBond.drawDate),
-                                    style:  TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                          Colors.red, // Set your desired color
-                                    ),
                                   ),
                                 ],
                               ),

@@ -1,13 +1,10 @@
 import 'package:bonds/Widgets/date_dropdown.dart';
 import 'package:bonds/Widgets/draw_dropdown.dart';
+import 'package:bonds/Widgets/text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
-
 import '../Controller/ApiService.dart';
 import '../Models/Draw_Date.dart';
-import '../Models/Range_Search.dart';
-import '../Models/Search_Bond.dart';
+import '../Widgets/customtext.dart';
 import 'Rangesearch_Results.dart';
 import 'Search_Result.dart';
 
@@ -26,50 +23,16 @@ class _DrawsearchState extends State<Drawsearch> {
   Future<void> fetchData() async {
     //print("Fetching dates for draw UID: ${widget.drawUid}");
     if (bondTypeUid != null) {
-      List<DrawDate> newDrawDates =
-          await apiService.fetchDrawDateData(bondTypeUid!);
+      List<DrawDate> newDrawDates = await apiService.fetchDrawDateData(bondTypeUid!);
       setState(() {
         drawDates = newDrawDates;
       });
     }
   }
 
-/*  Future<void> searchdata() async {
-    print("Fetching UID: ${widget.drawUid}");
-    print("Fetching textD: ${_fromRangeController.text}");
-
-    if (widget.drawUid != null && widget.firstNumber != null && widget.lastNumber != null) {
-      // Ensure that widget.firstNumber and widget.lastNumber are not null
-      int firstNumber = _fromRangeController.text as int;
-      int lastNumber = _toRangeController.text as int;
-
-      // Fetching search data using ApiService
-     await apiService.fetchRangeSearchData(
-        widget.drawUid!,
-        firstNumber,
-        lastNumber,
-      );
-      //rangeSearch = [result];
-      //print("Fetched dates: $rangeSearch");
-    }
-  }*/
-
-
-  // Future<List<SearchBond>> searchdata(
-  //     String prizeBondTypeUid, String drawuid, String prizeBond) async {
-  //   print("Fetching UID: $drawuid");
-  //   print("Fetching textD: $prizeBond");
-  //   if (drawuid != null && prizeBond != null) {
-  //     return apiService.fetchSearchBondData(prizeBondTypeUid, drawuid, prizeBond);
-  //   } else {
-  //     return [];
-  //   }
-  // }
-
   TextEditingController _fromRangeController = TextEditingController();
   TextEditingController _toRangeController = TextEditingController();
   TextEditingController _randomRangeController = TextEditingController();
-  // final RoundedLoadingButtonController _searchBtnController = RoundedLoadingButtonController();
 
   int selectedRadio = 0;
 
@@ -80,14 +43,7 @@ class _DrawsearchState extends State<Drawsearch> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.teal.shade600,
-        title: Text(
-          'Draw Search',
-          style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1),
-        ),
+        title: CustomText(txt: 'Draw Search', fntSize: 18),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -167,15 +123,7 @@ class _DrawsearchState extends State<Drawsearch> {
                               MaterialTapTargetSize.shrinkWrap,
                         ),
                       ),
-                      Text(
-                        'From/To',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1,
-                        ),
-                      ),
+                      CustomText(txt: 'From/To'),
                       Theme(
                         data: Theme.of(context).copyWith(
                           unselectedWidgetColor: Colors.white,
@@ -194,117 +142,40 @@ class _DrawsearchState extends State<Drawsearch> {
                               MaterialTapTargetSize.shrinkWrap,
                         ),
                       ),
-                      Text(
-                        'Misc.Numbers',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1,
-                        ),
-                      ),
+                      CustomText(txt: 'Misc.Numbers'),
                     ],
                   ),
                   SizedBox(height: 10),
                   if (selectedRadio == 0)
                     Column(
                       children: [
-                        Text(
-                          "Range Search",
-                          style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 1),
-                        ),
-                        Text(
-                          "Search For All Numbers in Range EXAMPLE: From: 122000 To: 122099",
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
+                        CustomText(txt: 'Range Search', fntSize: 16),
                         SizedBox(height: 10),
+                        CustomText(
+                            txt:
+                                'Search For All Numbers in Range EXAMPLE: From: 122000 To: 122099'),
+                        SizedBox(height: 20),
                         Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: EdgeInsets.all(4.0),
-                                child: Text(
-                                  'From:',
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: 1),
-                                ),
+                                child: CustomText(txt: 'From'),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: TextField(
-                                  controller: _fromRangeController,
-                                  decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide(
-                                          color: Colors.white, width: 4),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide(
-                                          color: Colors.white, width: 2),
-                                    ),
-                                    labelText: "Search Numbers",
-                                    labelStyle: TextStyle(color: Colors.white),
-                                    hintStyle:
-                                        GoogleFonts.nunito(color: Colors.white),
-                                  ),
-                                ),
+                                child: CustomTextField(
+                                    controller: _fromRangeController),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(4.0),
-                                child: Text(
-                                  'To:',
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: 1),
-                                ),
+                                child: CustomText(txt: 'To'),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: TextField(
-                                  controller: _toRangeController,
-                                  decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide(
-                                          color: Colors.white, width: 4),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide(
-                                          color: Colors.white, width: 2),
-                                    ),
-                                    labelText: "Search Numbers",
-                                    labelStyle: TextStyle(color: Colors.white),
-                                    hintStyle:
-                                        GoogleFonts.nunito(color: Colors.white),
-                                  ),
-                                ),
+                                child: CustomTextField(
+                                    controller: _toRangeController),
                               ),
                             ],
                           ),
@@ -319,40 +190,12 @@ class _DrawsearchState extends State<Drawsearch> {
                         children: [
                           Padding(
                             padding: EdgeInsets.all(4.0),
-                            child: Text(
-                              'Miscel.Numbers:',
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 1),
-                            ),
+                            child: CustomText(txt: 'Miscel.Numbers'),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                              controller: _randomRangeController,
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.white),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 4),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  borderSide:
-                                      BorderSide(color: Colors.white, width: 2),
-                                ),
-                                labelText:
-                                    "EXAMPLE: 123455,556879,445632,122354",
-                                labelStyle: TextStyle(color: Colors.white),
-                                hintStyle:
-                                    GoogleFonts.nunito(color: Colors.white),
-                              ),
-                            ),
+                            child: CustomTextField(
+                                controller: _randomRangeController),
                           ),
                         ],
                       ),
@@ -361,36 +204,6 @@ class _DrawsearchState extends State<Drawsearch> {
               ),
             ),
             SizedBox(height: 20),
-            // MaterialButton(
-            //   color: Colors.teal.shade900,
-            //   // controller: _searchBtnController,
-            //   onPressed: () {
-            //     //searchdata();
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => RangeSearchResult(
-            //           //drawUid: selectedDate.toString(),
-            //           drawUid: selectedDrawUid!,
-            //           firstNumber: int.parse(
-            //               _fromRangeController.text.trim().toString()),
-            //           lastNumber:
-            //               int.parse(_toRangeController.text.trim().toString()),
-            //           //prizeBondTypeUid: selectedDrawUid!,
-            //           prizeBondTypeUid: selectedDate.toString(),
-            //         ),
-            //       ),
-            //     );
-            //   },
-            //   child: Text(
-            //     "Search",
-            //     style: GoogleFonts.poppins(
-            //         color: Colors.white,
-            //         fontSize: 18,
-            //         fontWeight: FontWeight.w600,
-            //         letterSpacing: 1),
-            //   ),
-            // ),
             MaterialButton(
               color: Colors.teal.shade900,
               onPressed: () async {
@@ -403,7 +216,8 @@ class _DrawsearchState extends State<Drawsearch> {
                     MaterialPageRoute(
                       builder: (context) => RangeSearchResult(
                         drawUid: drawDateUid!,
-                        firstNumber: int.parse(_fromRangeController.text.trim()),
+                        firstNumber:
+                            int.parse(_fromRangeController.text.trim()),
                         lastNumber: int.parse(_toRangeController.text.trim()),
                         prizeBondTypeUid: bondTypeUid.toString(),
                       ),
@@ -431,15 +245,7 @@ class _DrawsearchState extends State<Drawsearch> {
                   }
                 }
               },
-              child: Text(
-                "Search",
-                style: GoogleFonts.poppins(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1,
-                ),
-              ),
+              child: CustomText(txt: 'Search'),
             )
           ],
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Dashboard/Dashboard.dart';
+import 'Views/Dashboard.dart';
 
 void main() => runApp( Prizebonds());
 

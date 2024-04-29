@@ -1,3 +1,4 @@
+import 'package:bonds/Widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,17 +8,10 @@ class SecurityFeatures extends StatefulWidget {
 }
 
 class _SecurityFeaturesState extends State<SecurityFeatures> {
-  List<String> imagePaths = [
-    'assets/images/100.jpg',
-    'assets/images/200.jpg',
-    'assets/images/750.jpg',
-    'assets/images/1500.jpg',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.teal.shade400,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.teal.shade600,
@@ -41,53 +35,64 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
           },
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 20, left: 8, right: 8),
-            child: Text(
-              "Security Features",
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1,
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(10, 60, 10, 30),
+        child: Column(
+          children: [
+            Container(
+              width: 400,
+              height: 80,
+              child: CardWidget(
+                txt: '100',
+                icon: Icons.monetization_on_outlined,
+                color: Colors.teal,
+                displayInRow: true,
+                trailingIcon: Icons.arrow_forward_ios_outlined,
               ),
             ),
-          ),
-          SizedBox(height: 20),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
+            SizedBox(height: 10),
+            Container(
+              width: 400,
+              height: 80,
+              child: CardWidget(
+                txt: '200',
+                icon: Icons.monetization_on_outlined,
+                color: Colors.teal,
+                displayInRow: true,
+                trailingIcon: Icons.arrow_forward_ios_outlined,
               ),
-              itemCount: imagePaths.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    // Navigate to larger view
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LargeImageView(imagePath: imagePaths[index]),
-                      ),
-                    );
-                  },
-                  child: Image.asset(
-                    imagePaths[index],
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
             ),
-          ),
-        ],
+            SizedBox(height: 10),
+            Container(
+              width: 400,
+              height: 80,
+              child: CardWidget(
+                txt: '750',
+                icon: Icons.monetization_on_outlined,
+                color: Colors.teal,
+                displayInRow: true,
+                trailingIcon: Icons.arrow_forward_ios_outlined,
+              ),
+            ),
+            SizedBox(height: 10),
+            Container(
+              width: 400,
+              height: 80,
+              child: CardWidget(
+                txt: '1500',
+                icon: Icons.monetization_on_outlined,
+                color: Colors.teal,
+                displayInRow: true,
+                trailingIcon: Icons.arrow_forward_ios_outlined,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+/*
 
 class LargeImageView extends StatelessWidget {
   final String imagePath;
@@ -119,4 +124,4 @@ class LargeImageView extends StatelessWidget {
       ),
     );
   }
-}
+}*/

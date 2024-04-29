@@ -2,24 +2,22 @@ import 'package:bonds/Models/Range_Search.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../Widgets/customtext.dart';
 
-import '../Models/Search_Bond.dart';
+
 
 class RangeSearchResult extends StatelessWidget {
   String drawUid;
-
   int firstNumber;
   int lastNumber;
   String prizeBondTypeUid;
 
   // Constructor to initialize parameters
-  RangeSearchResult({
-    required this.drawUid,
-    required this.firstNumber,
-    required this.lastNumber,
-    required this.prizeBondTypeUid
-  });
-
+  RangeSearchResult(
+      {required this.drawUid,
+      required this.firstNumber,
+      required this.lastNumber,
+      required this.prizeBondTypeUid});
 
   final ApiService apiService = ApiService();
 
@@ -28,15 +26,31 @@ class RangeSearchResult extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade600,
-        title:  Text('Search Results'),
+        title: CustomText(txt:'Search Results',fntSize: 18),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_outlined,
+            color: Colors.white,
+          ),
+          color: Colors.black,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
       body: Container(
         color: Colors.teal,
         child: FutureBuilder<List<RangeSearch>>(
-          future: apiService.fetchRangeSearchData(drawUid, firstNumber, lastNumber,    prizeBondTypeUid, ),
+          future: apiService.fetchRangeSearchData(
+            drawUid,
+            firstNumber,
+            lastNumber,
+            prizeBondTypeUid,
+          ),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return  Center(
+              return Center(
                 child: CircularProgressIndicator(),
               );
             } else if (snapshot.hasError) {
@@ -44,7 +58,7 @@ class RangeSearchResult extends StatelessWidget {
                 child: Text('Error: ${snapshot.error}'),
               );
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return  Center(
+              return Center(
                 child: Text('No results found.'),
               );
             } else {
@@ -54,7 +68,7 @@ class RangeSearchResult extends StatelessWidget {
                 itemBuilder: (context, index) {
                   RangeSearch rangeSearch = searchResults[index];
                   return Padding(
-                    padding:  EdgeInsets.only(top: 15, left: 5, right: 5),
+                    padding: EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
                       color: Colors.teal.shade100,
                       elevation: 4,
@@ -62,139 +76,91 @@ class RangeSearchResult extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
-                          padding:  EdgeInsets.all(16),
+                          padding: EdgeInsets.all(16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Prize Category:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Prize Category:',
                                   ),
-                                  SizedBox(width: 20),
-                                  Text(
-                                    rangeSearch.prize,
-                                    style:  TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.red, // Set your desired color
-                                    ),
+
+                                  CustomText(
+                                    txt: rangeSearch.prize,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Bond Number:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Bond Number:',
                                   ),
-                                  SizedBox(width: 26),
-                                  Text(
-                                    rangeSearch.prizeBondNumber,
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.red, // Set your desired color
-                                    ),
+
+                                  CustomText(
+                                    txt: rangeSearch.prizeBondNumber,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Prize Amount:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Prize Amount:',
                                   ),
-                                  SizedBox(width: 28),
-                                  Text(
-                                    '${rangeSearch.prizeAmount}',
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.red, // Set your desired color
-                                    ),
+
+                                  CustomText(
+                                    txt: '${rangeSearch.prizeAmount}',
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Draw Place:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Draw Place:',
                                   ),
-                                  SizedBox(width: 42),
-                                  Text(
-                                    rangeSearch.heldAt,
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.red, // Set your desired color
-                                    ),
+
+                                  CustomText(
+                                    txt: rangeSearch.heldAt,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Draw Number:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Draw Number:',
                                   ),
-                                  SizedBox(width: 28),
-                                  Text(
-                                    rangeSearch.drawNumber,
-                                    style: const TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.red, // Set your desired color
-                                    ),
+
+                                  CustomText(
+                                    txt: rangeSearch.drawNumber,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 5),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Draw Date:',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.blue, // Set your desired color
-                                    ),
+                                  CustomText(
+                                    txt: 'Draw Date:',
                                   ),
-                                  SizedBox(width: 48),
-                                  Text(
-                                    DateFormat('dd MMMM yyyy')
+
+                                  CustomText(
+                                    txt: DateFormat('dd MMMM yyyy')
                                         .format(rangeSearch.drawDate),
-                                    style:  TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color:
-                                      Colors.red, // Set your desired color
-                                    ),
                                   ),
                                 ],
                               ),

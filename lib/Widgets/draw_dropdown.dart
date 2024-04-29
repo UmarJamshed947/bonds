@@ -3,6 +3,8 @@ import 'package:bonds/controller/ApiService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
+import 'customtext.dart';
+
 class DrawDropdown extends StatefulWidget {
   final ValueChanged<String?> onDrawSelected;
 
@@ -31,10 +33,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
     });
   }
 
-  // Future<void> saveSelectedDrawUid(String drawUid) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setString('selectedDrawUid', drawUid);
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +41,18 @@ class _DrawDropdownState extends State<DrawDropdown> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
           isExpanded: true,
-          hint: const Row(
+          hint:  Row(
             children: [
               Expanded(
-                child: Text(
-                  'Select Draw',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  overflow: TextOverflow.ellipsis,
+                child: CustomText(
+                  txt:'Select Draw',
+                  fntSize: 13,
+                  // style: TextStyle(
+                  //   fontSize: 14,
+                  //   fontWeight: FontWeight.bold,
+                  //   color: Colors.white,
+                  // ),
+                  // overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
@@ -60,15 +60,13 @@ class _DrawDropdownState extends State<DrawDropdown> {
           items: bondTypes
               .map((BondType item) => DropdownMenuItem<String>(
                     value: item.prizeBondTypeUid,
-                    child: Text(
-                      item.name,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+                    child: CustomText(
+                      txt:item.name,
+                      fntSize: 13,
+
+
                     ),
+
                   ))
               .toList(),
           value: selectedValue,

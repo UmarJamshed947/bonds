@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Models/Search_Bond.dart';
 import '../Views/Search_Result.dart';
 import '../controller/ApiService.dart';
@@ -44,7 +43,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       height: 100,
-      width: 410,
+      width: 385,
       child: TextField(
         style: TextStyle(color: Colors.white),
         cursorColor: Colors.white,

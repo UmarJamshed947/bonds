@@ -5,12 +5,12 @@ import 'package:bonds/exceptions/app_exception.dart';
 import 'package:http/http.dart' as http;
 import '../Models/Range_Search.dart';
 import '../Models/Search_Bond.dart';
+import '../Models/Sec_Features.dart';
 
 class ApiService {
   final bool _loading = false;
   bool get loading => _loading;
   String Baseurl = 'https://prizebond.idev.im/api/v1/';
-
   Future<List<BondType>> fetchBondTypeData() async {
     var url = Uri.parse('${Baseurl}prize-bond-types');
     final response = await http.get(url);
@@ -26,13 +26,10 @@ class ApiService {
   //////////////////////////////////////////////////////////////////////////////////////////
   Future<List<DrawDate>> fetchDrawDateData(String drawuid) async {
     var url = Uri.parse('${Baseurl}draw/dates');
-
     Map<String, String> body = {
       'prize_bond_type_uid': drawuid,
     };
-
     final response = await postApiCall(url: url, body: body);
-
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
       return jsonResponse.map((data) => DrawDate.fromJson(data)).toList();
@@ -46,17 +43,11 @@ class ApiService {
       String prizeBondTypeUid, String drawuid, String prizeBond) async {
     // If drawuid is 'ALL', treat it as an empty string
     drawuid = (drawuid == 'ALL') ? '' : drawuid;
-
     Uri url = Uri.parse('${Baseurl}search/single');
-
     Map<String, String> body = {
       'prize_bond_type_uid': prizeBondTypeUid,
       'prize_bond_number': prizeBond,
     };
-
-    // if (drawuid != '') {
-    //   body['draw_uid'] = drawuid;
-    // }
     if (drawuid.isNotEmpty) {
       body['draw_uid'] = drawuid;
     }
@@ -75,7 +66,6 @@ class ApiService {
 
   //////////////////////////////////////////////////////////////////////////////////////////
   Future<List<RangeSearch>> fetchRangeSearchData(String drawUid,  int firstNumber, int lastNumber, String prizeBondTypeUid) async {
-   // drawUid = (drawUid == 'ALL') ? '' : drawUid;
     prizeBondTypeUid = (prizeBondTypeUid == 'ALL') ? '' : prizeBondTypeUid;
     final url = Uri.parse('https://prizebond.idev.im/api/v1/search/range');
 
@@ -92,10 +82,12 @@ class ApiService {
     Map<String, dynamic> body = {
       'prize_bond_number_first': firstNumber.toString(),
       'prize_bond_number_last': lastNumber.toString(),
-      'prize_bond_type_uid': drawUid,
+      // 'prize_bond_type_uid': drawUid,
+      'draw_uid':drawUid,
     };
     if (prizeBondTypeUid.isNotEmpty) {
-      body['draw_uid'] = prizeBondTypeUid;
+      //body['draw_uid'] = prizeBondTypeUid;
+      body['prize_bond_type_uid'] = prizeBondTypeUid;
     }
 
     try {
@@ -123,21 +115,22 @@ class ApiService {
   }
 
 
-  //////////////////////////////////////////////////////////////////////////////////////////
-  // Future<List<SearchBond>> fetchSearchBondData(String drawuid, String prizeBond ) async {
-  //
-  //   var url = Uri.parse('$Baseurl/search/single?draw_uid=$drawuid&prize_bond_number=$prizeBond');
-  //   final response = await http.post(url);
-  //   print(response.body);
-  //   print("Search Response");
-  //   if (response.statusCode == 200) {
-  //     List jsonResponse = json.decode(response.body);
-  //     return jsonResponse.map((data) => SearchBond.fromJson(data)).toList();
-  //   } else {
-  //     throw Exception('Unexpected error occured!');
-  //   }
-  // }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Method to fetch Security Features
+  Future<List<SecFeatures>> fetchSecurityFeatures(String prizeBondTypeUid) async {
+    Uri url = Uri.parse('${Baseurl}prize-bond-types/security-features');
+    Map<String, String> body = {
+      'prize_bond_type_uid': prizeBondTypeUid,
+    };
 
+    final response = await postApiCall(url: url, body: body);
+    if (response.statusCode == 200) {
+      return secFeaturesFromJson(response.body);
+    } else {
+      // Consider enhancing error handling by using custom exceptions or handling different status codes appropriately
+      throw Exception('Failed to load security features with status code: ${response.statusCode}');
+    }
+  }
 
 
   Future<http.Response> postApiCall({required Uri url, required var body}) async {
@@ -174,7 +167,4 @@ class ApiService {
             "with status code ${response.statusCode.toString()}");
     }
   }
-
-
-
 }

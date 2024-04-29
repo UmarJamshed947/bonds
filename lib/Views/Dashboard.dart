@@ -7,10 +7,8 @@ import 'package:bonds/widgets/draw_dropdown.dart';
 import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'Draw_Search.dart';
 
-import '../Views/Draw_Search.dart';
-import '../Widgets/web_view.dart';
 
 class Dashboard extends StatefulWidget {
 
@@ -20,7 +18,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  WebViewController? _webViewController;
+
 
   ApiService apiService = ApiService();
   String? selectedDrawUid;
@@ -37,15 +35,7 @@ class _DashboardState extends State<Dashboard> {
     }
   }
 
-  // Function to open a WebView for a given URL
-  void openWebView(String url) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => WebViewScreen(initialUrl: url),
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -136,16 +126,15 @@ class _DashboardState extends State<Dashboard> {
                           },
                           //color: Color(0xFF2ECC71), // Green
                         ),
-                        CardWidget(
+                        /*CardWidget(
                           txt: "Downloads",
                           icon: Icons.file_download,
                           color: Colors.teal,
                           onTap: (){
                             print("Downloads card tapped");
-                            openWebView('https://savings.gov.pk/prize-bonds/'); // Replace with your URL
                           },
                           // color: Color(0xFF3498DB), // Blue
-                        ),
+                        ),*/
                         CardWidget(
                           txt: "Schedules",
                           icon: Icons.event,
@@ -166,12 +155,12 @@ class _DashboardState extends State<Dashboard> {
                           },
                           // color: Color(0xFF9B59B6), // Purple
                         ),
-                        CardWidget(
+                    /*    CardWidget(
                           txt: "Denominations",
                           icon: Icons.attach_money_outlined,
                           color: Colors.teal,
                           // color: Color(0xFF1ABC9C), // Turquoise
-                        ),
+                        ),*/
                         CardWidget(
                           txt: "Prem-Bonds",
                           icon: Icons.star,
