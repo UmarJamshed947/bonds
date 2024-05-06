@@ -1,6 +1,14 @@
+import 'package:bonds/Views/sec_feature_display.dart';
 import 'package:bonds/Widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+// Map<String, String> prizeBondTypeUidMap = {
+//   '100': '01381510-f10e-4bf9-b41a-cefa39918a5e',
+//   '200': '0580e8db-5103-429d-93e0-08d41375ce3c',
+//   '750': 'd5ea03b7-0232-4e49-8cd3-9fac50d28bce',
+//   '1500': '1a50291b-cb32-4382-b4d4-0973000579d1',
+// };
 
 class SecurityFeatures extends StatefulWidget {
   @override
@@ -48,6 +56,24 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
                 color: Colors.teal,
                 displayInRow: true,
                 trailingIcon: Icons.arrow_forward_ios_outlined,
+                onTap: () {
+                  // String? prizeBondTypeUid =
+                  //     prizeBondTypeUidMap['100']; // Nullable string
+                  // if (prizeBondTypeUid != null) {
+                  //   // Check if the value is not null
+                  //   Navigator.of(context).push(
+                  //     MaterialPageRoute(
+                  //       builder: (context) => DisplaySecurityFeatures(
+                  //           prizeBondTypeUid: prizeBondTypeUid),
+                  //     ),
+                  //   );
+                  // }
+
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                      builder: (context) => DisplaySecurityFeatures(prizeBondTypeUid: '01381510-f10e-4bf9-b41a-cefa39918a5e'),
+                  ));
+                },
               ),
             ),
             SizedBox(height: 10),
@@ -60,6 +86,12 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
                 color: Colors.teal,
                 displayInRow: true,
                 trailingIcon: Icons.arrow_forward_ios_outlined,
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DisplaySecurityFeatures(prizeBondTypeUid: '0580e8db-5103-429d-93e0-08d41375ce3c'),
+                      ));
+                },
               ),
             ),
             SizedBox(height: 10),
@@ -72,6 +104,12 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
                 color: Colors.teal,
                 displayInRow: true,
                 trailingIcon: Icons.arrow_forward_ios_outlined,
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DisplaySecurityFeatures(prizeBondTypeUid: 'd5ea03b7-0232-4e49-8cd3-9fac50d28bce'),
+                      ));
+                },
               ),
             ),
             SizedBox(height: 10),
@@ -84,6 +122,12 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
                 color: Colors.teal,
                 displayInRow: true,
                 trailingIcon: Icons.arrow_forward_ios_outlined,
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DisplaySecurityFeatures(prizeBondTypeUid: '1a50291b-cb32-4382-b4d4-0973000579d1'),
+                      ));
+                },
               ),
             ),
           ],
@@ -125,3 +169,7 @@ class LargeImageView extends StatelessWidget {
     );
   }
 }*/
+// '100': '01381510-f10e-4bf9-b41a-cefa39918a5e',
+// '200': '0580e8db-5103-429d-93e0-08d41375ce3c',
+// '750': 'd5ea03b7-0232-4e49-8cd3-9fac50d28bce',
+// '1500': '1a50291b-cb32-4382-b4d4-0973000579d1',

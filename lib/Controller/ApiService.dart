@@ -23,6 +23,23 @@ class ApiService {
   }
 
 
+  // Method to fetch Security Features
+  Future<List<SecFeatures>> fetchSecurityFeatures(String prizeBondTypeUid) async {
+    Uri url = Uri.parse('${Baseurl}prize-bond-types/security-features');
+    Map<String, String> body = {
+      'prize_bond_type_uid': prizeBondTypeUid,
+    };
+
+    final response = await postApiCall(url: url, body: body);
+    if (response.statusCode == 200) {
+      return secFeaturesFromJson(response.body);
+    } else {
+      // Consider enhancing error handling by using custom exceptions or handling different status codes appropriately
+      throw Exception('Failed to load security features with status code: ${response.statusCode}');
+    }
+  }
+
+
   //////////////////////////////////////////////////////////////////////////////////////////
   Future<List<DrawDate>> fetchDrawDateData(String drawuid) async {
     var url = Uri.parse('${Baseurl}draw/dates');
@@ -116,21 +133,7 @@ class ApiService {
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Method to fetch Security Features
-  Future<List<SecFeatures>> fetchSecurityFeatures(String prizeBondTypeUid) async {
-    Uri url = Uri.parse('${Baseurl}prize-bond-types/security-features');
-    Map<String, String> body = {
-      'prize_bond_type_uid': prizeBondTypeUid,
-    };
 
-    final response = await postApiCall(url: url, body: body);
-    if (response.statusCode == 200) {
-      return secFeaturesFromJson(response.body);
-    } else {
-      // Consider enhancing error handling by using custom exceptions or handling different status codes appropriately
-      throw Exception('Failed to load security features with status code: ${response.statusCode}');
-    }
-  }
 
 
   Future<http.Response> postApiCall({required Uri url, required var body}) async {
