@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Models/Search_Bond.dart';
 import '../Views/Search_Result.dart';
@@ -41,32 +42,36 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       height: 100,
-      width: 385,
+      width: 450,
       child: TextField(
-        style: TextStyle(color: Colors.white),
-        cursorColor: Colors.white,
+        style: TextStyle(color: Color(0xFF333333),fontSize: 16,fontWeight: FontWeight.bold),
+        cursorColor: Color(0xFF2EC4B6),
         controller: _searchController,
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.allow(RegExp(r'^[\d,]*$')),
+        ],
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+            borderSide: BorderSide(color: Color(0xFF2EC4B6)),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: Colors.white, width: 4),
+            borderSide: BorderSide(color: Color(0xFF2EC4B6), width: 4),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: Colors.white, width: 2),
+            borderSide: BorderSide(color: Color(0xFF2EC4B6), width: 2),
           ),
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           //hintText: 'Search draw numbers',
           labelText: "Search Numbers",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Color(0xFF333333),fontSize: 16),
 
-          hintStyle: GoogleFonts.nunito(color: Colors.white),
-          prefixIcon: Icon(Icons.search, color: Colors.white),
+          hintStyle: GoogleFonts.nunito(color: Colors.white,fontSize: 14),
+          prefixIcon: Icon(Icons.search, color: Color(0xFF2EC4B6),size: 30),
           suffixIcon: GestureDetector(
             onTap: () async {
               searchdata(widget.prizeBondTypeUid, widget.dateUid,
@@ -84,7 +89,7 @@ class _SearchWidgetState extends State<SearchWidget> {
               );
             },
             child: Icon(Icons.arrow_circle_right_outlined,
-                color: Colors.white, size: 30),
+                color: Color(0xFF2EC4B6), size: 30),
           ),
         ),
       ),

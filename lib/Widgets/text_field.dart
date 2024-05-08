@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -12,16 +13,21 @@ class CustomTextField extends StatelessWidget {
     Key? key,
     required this.controller,
     this.labelText = "Search Numbers",
-    this.borderColor = Colors.white,
-    this.labelColor = Colors.white,
+    this.borderColor = const Color(0xFF2EC4B6),
+    this.labelColor = const Color(0xFF333333),
     this.hintStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style:TextStyle(color: Color(0xFF333333),fontSize: 16,fontWeight: FontWeight.bold),
+      cursorColor: Color(0xFF2EC4B6),
       controller: controller,
-      style: TextStyle(color: Colors.white),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+      ],
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: borderColor),
@@ -36,7 +42,7 @@ class CustomTextField extends StatelessWidget {
         ),
         labelText: labelText,
         labelStyle: TextStyle(color: labelColor),
-        hintStyle: hintStyle ?? GoogleFonts.nunito(color: Colors.white),
+        hintStyle: hintStyle ?? GoogleFonts.nunito(color: Color(0xFF2EC4B6)),
       ),
     );
   }

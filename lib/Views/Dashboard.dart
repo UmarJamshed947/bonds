@@ -1,12 +1,16 @@
+import 'dart:ui';
+
 import 'package:bonds/Models/Draw_Date.dart';
 import 'package:bonds/Views/Schedule_Screen.dart';
 import 'package:bonds/Views/Security_Features.dart';
+import 'package:bonds/Views/table.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:bonds/widgets/draw_dropdown.dart';
 import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
+import '../Widgets/customtext.dart';
 import 'Draw_Search.dart';
 
 class Dashboard extends StatefulWidget {
@@ -35,12 +39,9 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 4,
-        backgroundColor: Colors.teal.shade600,
-        title: SizedBox(
-          height: 100,
-          width: 100,
-        ),
+        elevation: 3,
+        backgroundColor: Color(0xFF2EC4B6),
+        title: CustomText(txt: "Prize Bonds", fntSize: 22),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -54,13 +55,13 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       body: Container(
-        color: Colors.teal,
+        color: Color(0xFFCBF3F0),
         // decoration: BoxDecoration(
         //     gradient: LinearGradient(
         //         colors: [Color(0xFFFAD585), Color(0xFFF47A7D)])),
         child: Column(children: [
           Container(
-            padding: EdgeInsets.only(top: 80),
+            padding: EdgeInsets.only(top: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -88,36 +89,39 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 40),
           SearchWidget(
               dateUid: selectedDate ?? '',
               prizeBondTypeUid: selectedDrawUid ?? ''),
+          SizedBox(height: 40),
           Flexible(
             child: Container(
-              padding:  EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(top: 60),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.teal.shade100,
-                borderRadius:  BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
                 ),
               ),
               child: Padding(
-                padding:  EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
                 child: GridView.count(
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 12,
                   crossAxisCount: 2,
                   childAspectRatio: 1.2,
-                  children:  [
+                  children: [
                     CardWidget(
                       txt: "Draw-Search",
                       icon: Icons.search,
-                      color: Colors.teal,
+                      color: Color(0xFF2EC4B6),
+
                       onTap: () {
                         print("Draw-Search card tapped");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Drawsearch()));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Drawsearch()));
+
                       },
                       //color: Color(0xFF2ECC71), // Green
                     ),
@@ -133,20 +137,28 @@ class _DashboardState extends State<Dashboard> {
                     CardWidget(
                       txt: "Schedules",
                       icon: Icons.event,
-                      color: Colors.teal,
+                      color: Color(0xFF2EC4B6),
+
                       onTap: () {
                         print("Draw-Search card tapped");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TableScreen()));
                       },
                       // color: Color(0xFFE67E22), // Orange
                     ),
                     CardWidget(
                       txt: "Sec-Features",
                       icon: Icons.security,
-                      color: Colors.teal,
+                      color: Color(0xFF2EC4B6),
+
                       onTap: () {
                         print("Draw-Search card tapped");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SecurityFeatures()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SecurityFeatures()));
                       },
                       // color: Color(0xFF9B59B6), // Purple
                     ),
@@ -157,9 +169,10 @@ class _DashboardState extends State<Dashboard> {
                           // color: Color(0xFF1ABC9C), // Turquoise
                         ),*/
                     CardWidget(
-                      txt: "Prem-Bonds",
-                      icon: Icons.star,
-                      color: Colors.teal,
+                      txt: "Denominations",
+                      icon: Icons.attach_money_outlined,
+                      color: Color(0xFF2EC4B6),
+
                       // color: Color(0xFFE74C3C), // Red
                     ),
                   ],
@@ -167,10 +180,6 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
           ),
-
-
-
-
         ]),
       ),
     );

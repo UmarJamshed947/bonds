@@ -46,7 +46,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
               Expanded(
                 child: CustomText(
                   txt:'Select Draw',
-                  fntSize: 13,
+                  fntSize: 16,
                   // style: TextStyle(
                   //   fontSize: 14,
                   //   fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
                     value: item.prizeBondTypeUid,
                     child: CustomText(
                       txt:item.name,
-                      fntSize: 13,
+                      fntSize: 16,
 
 
                     ),
@@ -82,14 +82,14 @@ class _DrawDropdownState extends State<DrawDropdown> {
           },
           buttonStyleData: ButtonStyleData(
             height: 60,
-            width: 160,
+            width: 180,
             padding: EdgeInsets.only(left: 20, right: 14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(0),
               border: Border.all(
                 color: Colors.white,
               ),
-              color: Colors.teal.shade500,
+              color: Color(0xFF2EC4B6),
             ),
             elevation: 3,
           ),
@@ -102,16 +102,19 @@ class _DrawDropdownState extends State<DrawDropdown> {
             iconDisabledColor: Colors.grey,
           ),
           dropdownStyleData: DropdownStyleData(
-            maxHeight: 180,
+            maxHeight: 280,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.teal,
+              color: Color(0xFF2EC4B6)
+              ,
             ),
             //offset: const Offset(-20, 0),
             scrollbarTheme: ScrollbarThemeData(
-              radius: Radius.circular(40),
+              radius: Radius.circular(20),
               thickness: MaterialStateProperty.all<double>(6),
               thumbVisibility: MaterialStateProperty.all<bool>(true),
+              thumbColor: MaterialStateProperty.all<Color>(Color(0xFFFFFFFF)), // Change the scrollbar color
+              trackColor: MaterialStateProperty.all<Color>(Colors.grey),
             ),
           ),
           menuItemStyleData: MenuItemStyleData(

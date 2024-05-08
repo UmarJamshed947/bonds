@@ -1,4 +1,5 @@
 import 'package:bonds/Models/Range_Search.dart';
+import 'package:bonds/Views/Draw_Search.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -24,9 +25,11 @@ class RangeSearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
-        backgroundColor: Colors.teal.shade600,
-        title: CustomText(txt:'Search Results',fntSize: 18),
+        backgroundColor: Color(0xFF2EC4B6),
+
+        title: CustomText(txt: "Searched Results", fntSize: 22),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -35,12 +38,12 @@ class RangeSearchResult extends StatelessWidget {
           ),
           color: Colors.black,
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Drawsearch()));
           },
         ),
       ),
       body: Container(
-        color: Colors.teal,
+        color: Color(0xFF2EC4B6),
         child: FutureBuilder<List<RangeSearch>>(
           future: apiService.fetchRangeSearchData(
             drawUid,
@@ -71,7 +74,7 @@ class RangeSearchResult extends StatelessWidget {
                     padding: EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
                       color: Colors.teal.shade100,
-                      elevation: 4,
+                      elevation: 3,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -86,10 +89,12 @@ class RangeSearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Prize Category:',
+                                      clr: Color(0xFF333333),
                                   ),
 
                                   CustomText(
                                     txt: rangeSearch.prize,
+                                    clr: Color(0xFF333333),
                                   ),
                                 ],
                               ),
@@ -100,10 +105,12 @@ class RangeSearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Bond Number:',
+                                    clr: Color(0xFF333333),
                                   ),
 
                                   CustomText(
                                     txt: rangeSearch.prizeBondNumber,
+                                    clr: Color(0xFF333333),
                                   ),
                                 ],
                               ),
@@ -114,10 +121,12 @@ class RangeSearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Prize Amount:',
+                                    clr: Colors.red,
                                   ),
 
                                   CustomText(
                                     txt: '${rangeSearch.prizeAmount}',
+                                    clr: Colors.red,
                                   ),
                                 ],
                               ),
@@ -128,10 +137,12 @@ class RangeSearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Draw Place:',
+                                    clr: Color(0xFF333333),
                                   ),
 
                                   CustomText(
                                     txt: rangeSearch.heldAt,
+                                    clr: Color(0xFF333333),
                                   ),
                                 ],
                               ),
@@ -142,10 +153,12 @@ class RangeSearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Draw Number:',
+                                    clr: Color(0xFF333333),
                                   ),
 
                                   CustomText(
                                     txt: rangeSearch.drawNumber,
+                                    clr: Color(0xFF333333),
                                   ),
                                 ],
                               ),
@@ -156,11 +169,13 @@ class RangeSearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Draw Date:',
+                                    clr: Color(0xFF333333),
                                   ),
 
                                   CustomText(
                                     txt: DateFormat('dd MMMM yyyy')
                                         .format(rangeSearch.drawDate),
+                                    clr: Color(0xFF333333),
                                   ),
                                 ],
                               ),

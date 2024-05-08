@@ -49,7 +49,7 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
           children: [
             Container(
               width: 400,
-              height: 80,
+              height: 100,
               child: CardWidget(
                 txt: '100',
                 icon: Icons.monetization_on_outlined,
@@ -79,7 +79,7 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
             SizedBox(height: 10),
             Container(
               width: 400,
-              height: 80,
+              height: 100,
               child: CardWidget(
                 txt: '200',
                 icon: Icons.monetization_on_outlined,
@@ -97,7 +97,7 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
             SizedBox(height: 10),
             Container(
               width: 400,
-              height: 80,
+              height: 100,
               child: CardWidget(
                 txt: '750',
                 icon: Icons.monetization_on_outlined,
@@ -115,7 +115,7 @@ class _SecurityFeaturesState extends State<SecurityFeatures> {
             SizedBox(height: 10),
             Container(
               width: 400,
-              height: 80,
+              height: 100,
               child: CardWidget(
                 txt: '1500',
                 icon: Icons.monetization_on_outlined,

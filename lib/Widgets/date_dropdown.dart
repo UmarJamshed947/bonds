@@ -51,7 +51,7 @@ class _DateDropdownState extends State<DateDropdown> {
           children: [
             CustomText(
               txt: 'Select Date',
-              fntSize: 13,
+              fntSize: 16,
             ),
           ],
         ),
@@ -60,7 +60,7 @@ class _DateDropdownState extends State<DateDropdown> {
             value: 'ALL',
             child: CustomText(
               txt: 'Select ALL',
-              fntSize: 13,
+              fntSize: 16,
             ),
           ),
           // Add the drawDates items
@@ -70,7 +70,7 @@ class _DateDropdownState extends State<DateDropdown> {
               value: item.drawUid,
               child: CustomText(
                 txt: formattedDate,
-                fntSize: 13,
+                fntSize: 16,
               ),
             );
           }),
@@ -86,14 +86,14 @@ class _DateDropdownState extends State<DateDropdown> {
         },
         buttonStyleData: ButtonStyleData(
           height: 60,
-          width: 160,
+          width: 180,
           padding: EdgeInsets.only(left: 20, right: 14),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(0),
             border: Border.all(
               color: Colors.white,
             ),
-            color: Colors.teal.shade500,
+            color: Color(0xFF2EC4B6),
           ),
           elevation: 3,
         ),
@@ -106,15 +106,18 @@ class _DateDropdownState extends State<DateDropdown> {
           iconDisabledColor: Colors.grey,
         ),
         dropdownStyleData: DropdownStyleData(
-          maxHeight: 180,
+          maxHeight: 280,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.teal,
+            color: Color(0xFF2EC4B6)
+            ,
           ),
           scrollbarTheme: ScrollbarThemeData(
-            radius: Radius.circular(40),
+            radius: Radius.circular(20),
             thickness: MaterialStateProperty.all<double>(6),
             thumbVisibility: MaterialStateProperty.all<bool>(true),
+            thumbColor: MaterialStateProperty.all<Color>(Color(0xFFFFFFFF)), // Change the scrollbar color
+            trackColor: MaterialStateProperty.all<Color>(Colors.grey),
           ),
         ),
         menuItemStyleData: MenuItemStyleData(

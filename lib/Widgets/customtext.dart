@@ -8,8 +8,9 @@ class CustomText extends StatelessWidget {
   double? fntSize;
   FontWeight? fntWeight;
   double? ltrSpacing;
+  TextAlign? textAlign;
 
-  CustomText ({ required this.txt, this.fntSize,this.fntWeight,this.clr, this.ltrSpacing
+  CustomText ({ required this.txt, this.fntSize,this.fntWeight,this.clr, this.ltrSpacing,this.textAlign
   //  this.clr,  this.fntSize,  this.fntWeight,  this.ltrSpacing
   });
 
@@ -17,9 +18,11 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       txt,
+      textAlign: textAlign,
+
       style: GoogleFonts.poppins(
           color: clr ?? Colors.white,
-          fontSize: fntSize ?? 14,
+          fontSize: fntSize ?? 18,
           fontWeight: fntWeight ?? FontWeight.w700,
           letterSpacing: ltrSpacing ?? 1),
     );
