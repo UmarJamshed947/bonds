@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:bonds/Models/Draw_Date.dart';
 import 'package:bonds/Views/Schedule_Screen.dart';
 import 'package:bonds/Views/Security_Features.dart';
+import 'package:bonds/Views/denominations.dart';
 import 'package:bonds/Views/table.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
@@ -99,7 +100,9 @@ class _DashboardState extends State<Dashboard> {
               padding: EdgeInsets.only(top: 60),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xFFB2E6E0),
+
+
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
@@ -172,9 +175,15 @@ class _DashboardState extends State<Dashboard> {
                       txt: "Denominations",
                       icon: Icons.attach_money_outlined,
                       color: Color(0xFF2EC4B6),
+    onTap: () {
+      print("Draw-Search card tapped");
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Denominations()));
 
-                      // color: Color(0xFFE74C3C), // Red
-                    ),
+      // color: Color(0xFFE74C3C), // Red
+    } ),
                   ],
                 ),
               ),

@@ -211,9 +211,10 @@ class SecurityFeatures extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
+            crossAxisCount: 2, // Adjust the number of columns as needed
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
+            childAspectRatio: 0.7, // Adjust the aspect ratio of each item
           ),
           itemCount: prizeBondInfoList.length,
           itemBuilder: (context, index) {
@@ -222,6 +223,7 @@ class SecurityFeatures extends StatelessWidget {
         ),
       ),
     );
+
   }
 
   Widget buildImageContainer(BuildContext context, PrizeBondInfo prizeBondInfo) {

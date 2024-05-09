@@ -122,25 +122,53 @@ class DisplaySecurityFeatures extends StatelessWidget {
                   itemCount: securityFeatures.length,
                   itemBuilder: (context, index) {
                     final feature = securityFeatures[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.network(
-                          feature.image,
-                          fit: BoxFit.fitHeight,
-                          // Adjust the height and width of the image if necessary
-                          height: 200, // Adjust height as needed
-                          width: double.infinity, // Take full width
-                        ),
-                        SizedBox(height: 5),
-                        Text(feature.feature),
-                        SizedBox(height: 5),
-                        Text(feature.description ?? ''),
-
-                      ],
+                    return Container(
+                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.network(
+                            feature.image,
+                            fit: BoxFit.cover,
+                            height: 200,
+                            width: double.infinity,
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            feature.feature,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            feature.description ?? '',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[700],
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 );
+
               } else {
                 return Center(
                   child: Text('No security features found.'),
