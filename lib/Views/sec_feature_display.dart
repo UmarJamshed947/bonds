@@ -71,11 +71,9 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:bonds/Models/Sec_Features.dart';
 import 'package:bonds/controller/ApiService.dart';
-
 import '../Widgets/customtext.dart';
 
 class DisplaySecurityFeatures extends StatelessWidget {
@@ -89,8 +87,9 @@ class DisplaySecurityFeatures extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal.shade600,
-        title: CustomText(txt: 'Security Features ', fntSize: 18),
+        elevation: 3,
+        backgroundColor: Color(0xFF2EC4B6),
+        title: CustomText(txt: 'Security Features ', fntSize: 22),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -104,7 +103,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.teal,
+        color: Color(0xFFCBF3F0),
         child: FutureBuilder<List<SecFeatures>>(
           future: apiService.fetchSecurityFeatures(prizeBondTypeUid),
           builder: (context, snapshot) {
@@ -123,10 +122,22 @@ class DisplaySecurityFeatures extends StatelessWidget {
                   itemCount: securityFeatures.length,
                   itemBuilder: (context, index) {
                     final feature = securityFeatures[index];
-                    return ListTile(
-                      title: Text(feature.feature),
-                      subtitle: Text(feature.description ?? ''),
-                      leading: Image.network(feature.image), // Assuming image is a URL
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          feature.image,
+                          fit: BoxFit.fitHeight,
+                          // Adjust the height and width of the image if necessary
+                          height: 200, // Adjust height as needed
+                          width: double.infinity, // Take full width
+                        ),
+                        SizedBox(height: 5),
+                        Text(feature.feature),
+                        SizedBox(height: 5),
+                        Text(feature.description ?? ''),
+
+                      ],
                     );
                   },
                 );

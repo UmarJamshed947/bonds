@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Widgets/custom_table.dart';
 import '../Widgets/customtext.dart';
 
 class TableScreen extends StatelessWidget {
@@ -25,425 +26,322 @@ class TableScreen extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding:  EdgeInsets.all(10),
-                child: CustomText(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                CustomText(
                   txt: 'GOVERNMENT OF PAKISTAN\n'
                       'CENTRAL DIRECTORATE OF NATIONAL SAVINGS ISLAMABAD\n'
                       'No.F.3 (12) Sch-2/PB-15/Draw Schedule.\n'
                       '24th October, 2023\n'
                       'DRAW SCHEDULE OF NATIONAL PRIZE BONDS FROM JANUARY, 2024 TO DECEMBER, 2024,',
                   textAlign: TextAlign.center,
-                  fntSize: 16,
+                  fntSize: 14,
                   clr: Color(0xFF333333),
                 ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: Table(
-                  border: TableBorder.all(),
-                  children: [
-                    TableRow(
-                      decoration: BoxDecoration(color: Colors.grey),
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('Day/Date'),
+
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Table(
+                    border: TableBorder.all(),
+                    children: [
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFF2EC4B6)),
+                        children: [
+                          CustomTableCell(txt:('Date'),clr: Colors.white,
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rs.1500/-'),
+                          CustomTableCell(txt:('Rs.1500/-'),clr: Colors.white,
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rs.100/-'),
+                          CustomTableCell(txt:('Rs.100/-'),clr: Colors.white,
                           ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-02-2024'),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('15-02-2024'),
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Lahore'),
+                          CustomTableCell(txt:('Lahore'),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Peshawar'),
+                          CustomTableCell(txt:('Peshawar'),
+
                           ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-05-2024'),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('15-05-2024'),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Karachi'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Lahore'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-08-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Multan'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Karachi'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-11-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rawalpindi'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Multan'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: Table(
-                  border: TableBorder.all(),
-                  children: [
-                    TableRow(
-                      decoration: BoxDecoration(color: Colors.grey),
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('Day'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rs.750/-'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rs.200/-'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-01-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Sialkot'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-03-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Muzaffarabad'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-04-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Hyderabad'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('17-06-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rawalpindi'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-07-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Quetta'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('16-09-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Peshawar'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('15-10-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Faisalabad'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('16-12-2024'),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text(''),
-                          ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Sialkot'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding:  EdgeInsets.all(10),
-                child: CustomText(
-                  txt:'DRAW SCHEDULE OF PREMIUM PRIZE BONDS RS.40.000/- & Rs.25.000/- FROM JANUARY, 2024 TO DECEMBER, 2024.',
-                  textAlign: TextAlign.center,
-                  fntSize: 16,
-                  clr: Color(0xFF333333),
+                          CustomTableCell(txt:('Karachi'),
 
 
+                          ),
+                          CustomTableCell(txt:('Lahore'),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('15-08-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Multan'), ),
+                            CustomTableCell(txt:('Karachi'),
+
+
+                          ),
+
+
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('15-11-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Rawalpindi'),
+
+
+                          ),
+                          CustomTableCell(txt:('Multan'),
+
+
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: Table(
-                  border: TableBorder.all(),
-                  children: [
-                    TableRow(
-                      decoration: BoxDecoration(color: Colors.grey),
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('Day'),
+
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Table(
+                    border: TableBorder.all(),
+                    children: [
+
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFF2EC4B6)),
+                        children: [
+                          CustomTableCell(txt:('Day'),clr: Colors.white,
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rs.40,000/-'),
+                          CustomTableCell(txt:('Rs.750/-'),clr: Colors.white,
+
+
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Rs.25,000/-'),
+                          CustomTableCell(txt:('Rs.200/-'),clr: Colors.white,
+
                           ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('11-03-2024'),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('15-01-2024'),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Faisalabad'),
+                          CustomTableCell(txt:('Sialkot'),),
+                            CustomTableCell(txt:(''),
+
+
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Karachi'),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('15-03-2024'),
+
                           ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('10-06-2024'),
+                          CustomTableCell(txt:(''),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Multan'),
+                          CustomTableCell(txt:('Muzaffarabad'),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Peshawar'),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('15-04-2024'),
+
                           ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('10-09-2024'),
+                          CustomTableCell(txt:('Hyderabad'),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Lahore'),
+                          CustomTableCell(txt:(''),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Hyderabad'),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('17-06-2024'),
+
                           ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        TableCell(
-                          child: Center(
-                            child: Text('10-12-2024'),
+                          CustomTableCell(txt:(''),
+
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Muzaffarabad'),
+                          CustomTableCell(txt:('Rawalpindi'),
+
                           ),
-                        ),
-                        TableCell(
-                          child: Center(
-                            child: Text('Quetta'),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('15-07-2024'),
+
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          CustomTableCell(txt:('Quetta'),
+
+                          ),
+                          CustomTableCell(txt:(''),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('16-09-2024'),
+
+                          ),
+                          CustomTableCell(txt:(''),
+
+                          ),
+                          CustomTableCell(txt:('Peshawar'),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('15-10-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Faisalabad'),
+
+                          ),
+                          CustomTableCell(txt:(''),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('16-12-2024'),
+
+                          ),
+                          CustomTableCell(txt:(''),
+
+                          ),
+                          CustomTableCell(txt:('Sialkot'),
+
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+
+                Padding(
+                  padding:  EdgeInsets.all(10),
+                  child: CustomText(
+                    txt:'DRAW SCHEDULE OF PREMIUM PRIZE BONDS RS.40.000/- & Rs.25.000/- FROM JANUARY, 2024 TO DECEMBER, 2024.',
+                    textAlign: TextAlign.center,
+                    fntSize: 14,
+                    clr: Color(0xFF333333),
+
+
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Table(
+                    border: TableBorder.all(),
+                    children: [
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFF2EC4B6)),
+                        children: [
+                          CustomTableCell(txt:('Day'),clr: Colors.white,
+
+                          ),
+                          CustomTableCell(txt:('Rs.40,000/-'),clr: Colors.white,
+
+                          ),
+                          CustomTableCell(txt:('Rs.25,000/-'),clr: Colors.white,
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('11-03-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Faisalabad'),
+
+                          ),
+                          CustomTableCell(txt:('Karachi'),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('10-06-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Multan'),
+
+                          ),
+                          CustomTableCell(txt:('Peshawar'),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          CustomTableCell(txt:('10-09-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Lahore'),
+
+                          ),
+                          CustomTableCell(txt:('Hyderabad'),
+
+                          ),
+                        ],
+                      ),
+                      TableRow(
+                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        children: [
+                          CustomTableCell(txt:('10-12-2024'),
+
+                          ),
+                          CustomTableCell(txt:('Muzaffarabad'),
+
+                          ),
+                          CustomTableCell(txt:('Quetta'),
+
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
