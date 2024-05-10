@@ -262,6 +262,7 @@
 //   }
 // }
 // */
+import 'package:bonds/Views/Dashboard.dart';
 import 'package:bonds/Widgets/date_dropdown.dart';
 import 'package:bonds/Widgets/draw_dropdown.dart';
 import 'package:bonds/Widgets/text_field.dart';
@@ -284,7 +285,8 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
   List<DrawDate> drawDates = [];
   Future<void> fetchData() async {
     if (bondTypeUid != null) {
-      List<DrawDate> newDrawDates = await apiService.fetchDrawDateData(bondTypeUid!);
+      List<DrawDate> newDrawDates =
+          await apiService.fetchDrawDateData(bondTypeUid!);
       setState(() {
         drawDates = newDrawDates;
       });
@@ -318,10 +320,10 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFCBF3F0),
+      backgroundColor: Color(0xFFFAF8F8),
       appBar: AppBar(
         elevation: 3,
-        backgroundColor: Color(0xFF2EC4B6),
+        backgroundColor: Color(0xFF2196F3),
         title: CustomText(txt: 'Draw Search', fntSize: 22),
         centerTitle: true,
         leading: IconButton(
@@ -330,7 +332,8 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => Dashboard()));
           },
         ),
       ),
@@ -383,13 +386,16 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                         animation: _animation,
                         builder: (context, child) {
                           return Transform.scale(
-                            scale: selectedRadio == 0 ? 1 + _animation.value * 0.1 : 1,
+                            scale: selectedRadio == 0
+                                ? 1 + _animation.value * 0.1
+                                : 1,
                             child: child,
                           );
                         },
                         child: Theme(
                           data: Theme.of(context).copyWith(
-                            unselectedWidgetColor:  Color(0xFF333333), // Change non-active color here
+                            unselectedWidgetColor: Color(
+                                0xFF2196F3), // Change non-active color here
                           ),
                           child: Radio(
                             value: 0,
@@ -400,24 +406,28 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                               });
                               _animationController.forward(from: 0);
                             },
-                            activeColor:  Color(0xFF333333),
-                            hoverColor:  Color(0xFF333333),
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            activeColor: Color(0xFF2196F3),
+                            hoverColor: Color(0xFF2196F3),
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
                           ),
                         ),
                       ),
-                      CustomText(txt: 'From/To',fntSize: 20,clr: Color(0xFF333333)),
+                      CustomText(
+                          txt: 'From/To', fntSize: 20, clr: Color(0xFF2196F3)),
                       AnimatedBuilder(
                         animation: _animation,
                         builder: (context, child) {
                           return Transform.scale(
-                            scale: selectedRadio == 1 ? 1 + _animation.value * 0.1 : 1,
+                            scale: selectedRadio == 1
+                                ? 1 + _animation.value * 0.1
+                                : 1,
                             child: child,
                           );
                         },
                         child: Theme(
                           data: Theme.of(context).copyWith(
-                            unselectedWidgetColor:  Color(0xFF333333),
+                            unselectedWidgetColor: Color(0xFF2196F3),
                           ),
                           child: Radio(
                             value: 1,
@@ -428,23 +438,32 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                               });
                               _animationController.forward(from: 0);
                             },
-                            activeColor: Color(0xFF333333),
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            activeColor: Color(0xFF2196F3),
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
                           ),
                         ),
                       ),
-                      CustomText(txt: 'Misc.Numbers',fntSize: 20,clr: Color(0xFF333333)),
+                      CustomText(
+                          txt: 'Misc.Numbers',
+                          fntSize: 20,
+                          clr: Color(0xFF2196F3)),
                     ],
                   ),
                   SizedBox(height: 10),
                   if (selectedRadio == 0)
                     Column(
                       children: [
-                        CustomText(txt: 'Range Search', fntSize: 26,clr: Color(0xFF333333)),
+                        CustomText(
+                            txt: 'Range Search',
+                            fntSize: 26,
+                            clr: Color(0xFF2196F3)),
                         SizedBox(height: 10),
                         CustomText(
                             txt:
-                            'Search For All Numbers in Range EXAMPLE: From: 122000 To: 122099',clr: Color(0xFF333333),fntSize: 16),
+                                'Search For All Numbers in Range EXAMPLE: From: 122000 To: 122099',
+                            clr: Color(0xFF2196F3),
+                            fntSize: 16),
                         SizedBox(height: 20),
                         Container(
                           child: Column(
@@ -452,7 +471,10 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                             children: [
                               Padding(
                                 padding: EdgeInsets.all(4.0),
-                                child: CustomText(txt: 'From',clr: Color(0xFF333333),fntSize: 20),
+                                child: CustomText(
+                                    txt: 'From',
+                                    clr: Color(0xFF2196F3),
+                                    fntSize: 20),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -461,7 +483,10 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                               ),
                               Padding(
                                 padding: EdgeInsets.all(4.0),
-                                child: CustomText(txt: 'To',clr: Color(0xFF333333),fntSize: 20),
+                                child: CustomText(
+                                    txt: 'To',
+                                    clr: Color(0xFF2196F3),
+                                    fntSize: 20),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -481,7 +506,10 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                         children: [
                           Padding(
                             padding: EdgeInsets.all(4.0),
-                            child: CustomText(txt: 'Miscel.Numbers',clr: Color(0xFF333333),fntSize: 20),
+                            child: CustomText(
+                                txt: 'Miscel.Numbers',
+                                clr: Color(0xFF2196F3),
+                                fntSize: 20),
                           ),
                           Padding(
                             padding: EdgeInsets.all(8.0),
@@ -495,22 +523,42 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
               ),
             ),
             SizedBox(height: 20),
-            MaterialButton(
+            /*MaterialButton(
               onPressed: () async {
-                if (selectedRadio == 0) {
+                if (selectedRadio == 0 && bondTypeUid != null) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => RangeSearchResult(
                         drawUid: drawDateUid!,
                         firstNumber:
-                        int.parse(_fromRangeController.text.trim()),
+                            int.parse(_fromRangeController.text.trim()),
                         lastNumber: int.parse(_toRangeController.text.trim()),
                         prizeBondTypeUid: bondTypeUid.toString(),
                       ),
                     ),
                   );
-                } else if (selectedRadio == 1) {
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: CustomText(txt: 'Warning', clr: Colors.red),
+                      content: Text('Please select both dropdowns first.'),
+                      actions: [
+                        MaterialButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: CustomText(txt: 'OK'),
+                          color: Color(0xFF2196F3),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                if (selectedRadio == 1 && bondTypeUid != null) {
                   String prizeBondTypeUid = bondTypeUid.toString();
                   String prizeBond = _randomRangeController.text.trim();
                   if (prizeBond.isNotEmpty) {
@@ -525,16 +573,112 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                       ),
                     );
                   }
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: CustomText(txt: 'Warning', clr: Colors.red),
+                      content: Text('Please select both dropdowns first.'),
+                      actions: [
+                        MaterialButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: CustomText(txt: 'OK'),
+                          color: Color(0xFF2196F3),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 }
               },
-              child: CustomText(txt: 'Search',fntSize: 20),
-              color:  Color(0xFF2EC4B6),
+              child: CustomText(txt: 'Search', fntSize: 20),
+              color: Color(0xFF2196F3),
+              minWidth: 300,
+              height: 50,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            )*/
+            MaterialButton(
+              onPressed: () async {
+                if (selectedRadio == 0 && bondTypeUid != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RangeSearchResult(
+                        drawUid: drawDateUid!,
+                        firstNumber: int.parse(_fromRangeController.text.trim()),
+                        lastNumber: int.parse(_toRangeController.text.trim()),
+                        prizeBondTypeUid: bondTypeUid.toString(),
+                      ),
+                    ),
+                  );
+                } else if (selectedRadio == 0) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: CustomText(txt: 'Warning', clr: Colors.red),
+                      content: Text('Please select both dropdowns first.'),
+                      actions: [
+                        MaterialButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: CustomText(txt: 'OK'),
+                          color: Color(0xFF2196F3),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                if (selectedRadio == 1 && bondTypeUid != null) {
+                  String prizeBondTypeUid = bondTypeUid.toString();
+                  String prizeBond = _randomRangeController.text.trim();
+                  if (prizeBond.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchResult(
+                          prizeBondTypeUid: prizeBondTypeUid,
+                          drawDateUid: drawDateUid!,
+                          prizeBond: prizeBond,
+                        ),
+                      ),
+                    );
+                  }
+                } else if (selectedRadio == 1) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: CustomText(txt: 'Warning', clr: Colors.red),
+                      content: Text('Please select both dropdowns first.'),
+                      actions: [
+                        MaterialButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: CustomText(txt: 'OK'),
+                          color: Color(0xFF2196F3),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+              child: CustomText(txt: 'Search', fntSize: 20),
+              color: Color(0xFF2196F3),
               minWidth: 300,
               height: 50,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
             )
+
           ],
         ),
       ),

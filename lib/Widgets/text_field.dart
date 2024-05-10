@@ -13,16 +13,16 @@ class CustomTextField extends StatelessWidget {
     Key? key,
     required this.controller,
     this.labelText = "Search Numbers",
-    this.borderColor = const Color(0xFF2EC4B6),
-    this.labelColor = const Color(0xFF333333),
+    this.borderColor = const Color(0xFF2196F3),
+    this.labelColor = const Color(0xFF2196F3),
     this.hintStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style:TextStyle(color: Color(0xFF333333),fontSize: 16,fontWeight: FontWeight.bold),
-      cursorColor: Color(0xFF2EC4B6),
+      style:TextStyle(color: Color(0xFF2196F3),fontSize: 16,fontWeight: FontWeight.bold),
+      cursorColor: Color(0xFF2196F3),
       controller: controller,
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
@@ -42,7 +42,7 @@ class CustomTextField extends StatelessWidget {
         ),
         labelText: labelText,
         labelStyle: TextStyle(color: labelColor),
-        hintStyle: hintStyle ?? GoogleFonts.nunito(color: Color(0xFF2EC4B6)),
+        hintStyle: hintStyle ?? GoogleFonts.nunito(color: Color(0xFF2196F3)),
       ),
     );
   }

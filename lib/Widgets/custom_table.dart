@@ -18,7 +18,7 @@ class CustomTableCell extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 15,
 
-            color: clr ?? Color(0xFF333333),
+            color: clr ?? Color(0xFF2196F3),
 
               ),
         ),

@@ -13,10 +13,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Color(0xFFFAF8F8),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.teal.shade600,
+        //backgroundColor: Color(0xFF2196F3),
         title: Text(
           'Schedule',
           style: GoogleFonts.poppins(

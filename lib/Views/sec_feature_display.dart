@@ -88,7 +88,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 3,
-        backgroundColor: Color(0xFF2EC4B6),
+        backgroundColor: Color(0xFF2196F3),
         title: CustomText(txt: 'Security Features ', fntSize: 22),
         centerTitle: true,
         leading: IconButton(
@@ -103,7 +103,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color(0xFFCBF3F0),
+        color: Color(0xFF90CAF9),
         child: FutureBuilder<List<SecFeatures>>(
           future: apiService.fetchSecurityFeatures(prizeBondTypeUid),
           builder: (context, snapshot) {
@@ -143,7 +143,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
                           Image.network(
                             feature.image,
                             fit: BoxFit.cover,
-                            height: 200,
+                            height: 100,
                             width: double.infinity,
                           ),
                           SizedBox(height: 10),
@@ -152,7 +152,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                              color: Color(0xFF2196F3),
                             ),
                           ),
                           SizedBox(height: 5),

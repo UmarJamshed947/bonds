@@ -24,7 +24,7 @@ class SearchResult extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 3,
-        backgroundColor: Color(0xFF2EC4B6),
+        backgroundColor: Color(0xFF2196F3),
         title: CustomText(txt: 'Search Result', fntSize: 22),
         centerTitle: true,
         leading: IconButton(
@@ -40,7 +40,7 @@ class SearchResult extends StatelessWidget {
         ),
       ),
       body: Container(
-          color: Color(0xFF2EC4B6),
+          color: Color(0xFFFAF8F8),
         child: FutureBuilder<List<SearchBond>>(
           future: apiService.fetchSearchBondData(
               prizeBondTypeUid, drawDateUid, prizeBond),
@@ -66,7 +66,7 @@ class SearchResult extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
-                      color: Colors.teal.shade100,
+                      color: Color(0xFF2196F3),
                       elevation: 4,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -82,11 +82,11 @@ class SearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Prize Category:',
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                   CustomText(
                                     txt: searchBond.prize,
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                 ],
                               ),
@@ -97,11 +97,11 @@ class SearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Bond Number:',
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                   CustomText(
                                     txt: searchBond.prizeBondNumber,
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                 ],
                               ),
@@ -112,11 +112,11 @@ class SearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Prize Amount:',
-                                    clr: Colors.red,
+                                    clr: Colors.yellowAccent,
                                   ),
                                   CustomText(
                                     txt: '${searchBond.prizeAmount}',
-                                    clr: Colors.red,
+                                    clr: Colors.yellowAccent,
                                   ),
                                 ],
                               ),
@@ -127,11 +127,11 @@ class SearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Draw Place:',
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                   CustomText(
                                     txt: searchBond.heldAt,
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                 ],
                               ),
@@ -142,11 +142,11 @@ class SearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Draw Number:',
-                                    clr: Color(0xFF333333),
+                                    clr:Colors.white,
                                   ),
                                   CustomText(
                                     txt: searchBond.drawNumber,
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                 ],
                               ),
@@ -157,12 +157,12 @@ class SearchResult extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     txt: 'Draw Date:',
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                   CustomText(
                                     txt: DateFormat('dd MMMM yyyy')
                                         .format(searchBond.drawDate),
-                                    clr: Color(0xFF333333),
+                                    clr: Colors.white,
                                   ),
                                 ],
                               ),

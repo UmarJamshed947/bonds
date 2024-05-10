@@ -191,10 +191,10 @@ class SecurityFeatures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFCBF3F0),
+      backgroundColor: Color(0xFFFAF8F8),
       appBar: AppBar(
         elevation: 3,
-        backgroundColor: Color(0xFF2EC4B6),
+        backgroundColor: Color(0xFF2196F3),
         title: CustomText(txt: 'Security Features', fntSize: 22),
         centerTitle: true,
         leading: IconButton(

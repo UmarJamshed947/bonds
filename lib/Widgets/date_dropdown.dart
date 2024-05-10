@@ -93,7 +93,7 @@ class _DateDropdownState extends State<DateDropdown> {
             border: Border.all(
               color: Colors.white,
             ),
-            color: Color(0xFF2EC4B6),
+            color: Color(0xFF2196F3),
           ),
           elevation: 3,
         ),
@@ -109,7 +109,7 @@ class _DateDropdownState extends State<DateDropdown> {
           maxHeight: 280,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color(0xFF2EC4B6)
+            color: Color(0xFF2196F3)
             ,
           ),
           scrollbarTheme: ScrollbarThemeData(

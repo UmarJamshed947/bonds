@@ -16,8 +16,10 @@ class SecurityFeatures extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.teal.shade400,
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.teal.shade600,
+        backgroundColor: Color(0xFF2196F3),
+
+        elevation: 3,
+
         title: Text(
           'Security Features',
           style: GoogleFonts.poppins(

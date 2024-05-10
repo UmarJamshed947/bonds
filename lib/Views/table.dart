@@ -8,10 +8,10 @@ class TableScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFFCBF3F0),
+        backgroundColor: Color(0xFFFAF8F8),
         appBar: AppBar(
           elevation: 3,
-          backgroundColor: Color(0xFF2EC4B6),
+          backgroundColor: Color(0xFF2196F3),
           title: CustomText(txt: "Schedule", fntSize: 22),
           centerTitle: true,
           leading: IconButton(
@@ -37,16 +37,16 @@ class TableScreen extends StatelessWidget {
                       'DRAW SCHEDULE OF NATIONAL PRIZE BONDS FROM JANUARY, 2024 TO DECEMBER, 2024,',
                   textAlign: TextAlign.center,
                   fntSize: 14,
-                  clr: Color(0xFF333333),
+                  clr:Color(0xFF2196F3),
                 ),
 
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(),
+                    border: TableBorder.all(color: Color(0xFF2196F3),width: 2.0),
                     children: [
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFF2EC4B6)),
+                        decoration: BoxDecoration(color: Color(0xFF2196F3)),
                         children: [
                           CustomTableCell(txt:('Date'),clr: Colors.white,
                           ),
@@ -69,7 +69,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('15-05-2024'),
 
@@ -98,7 +98,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('15-11-2024'),
 
@@ -120,11 +120,11 @@ class TableScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(),
+                    border: TableBorder.all(color: Color(0xFF2196F3),width: 2.0),
                     children: [
 
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFF2EC4B6)),
+                        decoration: BoxDecoration(color: Color(0xFF2196F3)),
                         children: [
                           CustomTableCell(txt:('Day'),clr: Colors.white,
 
@@ -153,7 +153,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('15-03-2024'),
 
@@ -180,7 +180,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('17-06-2024'),
 
@@ -208,7 +208,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('16-09-2024'),
 
@@ -235,7 +235,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('16-12-2024'),
 
@@ -258,7 +258,7 @@ class TableScreen extends StatelessWidget {
                     txt:'DRAW SCHEDULE OF PREMIUM PRIZE BONDS RS.40.000/- & Rs.25.000/- FROM JANUARY, 2024 TO DECEMBER, 2024.',
                     textAlign: TextAlign.center,
                     fntSize: 14,
-                    clr: Color(0xFF333333),
+                    clr: Color(0xFF2196F3),
 
 
                   ),
@@ -267,10 +267,10 @@ class TableScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(),
+                    border: TableBorder.all(color: Color(0xFF2196F3),width: 2.0),
                     children: [
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFF2EC4B6)),
+                        decoration: BoxDecoration(color: Color(0xFF2196F3)),
                         children: [
                           CustomTableCell(txt:('Day'),clr: Colors.white,
 
@@ -297,7 +297,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('10-06-2024'),
 
@@ -324,7 +324,7 @@ class TableScreen extends StatelessWidget {
                         ],
                       ),
                       TableRow(
-                        decoration: BoxDecoration(color: Color(0xFFF5CB98)),
+                        decoration: BoxDecoration(color: Color(0xFFBBDEFB)),
                         children: [
                           CustomTableCell(txt:('10-12-2024'),
 

@@ -4,12 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 
+import '../Widgets/customtext.dart';
+import 'Dashboard.dart';
+
 class Denominations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Professional Image Layout'),
+        backgroundColor: Color(0xFF2196F3),
+        elevation: 3,
+        title: CustomText(txt:'Denominations',fntSize: 22),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_outlined,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => Dashboard()));
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,23 +71,26 @@ class Denominations extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.7,
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: Image.asset(assetPath, fit: BoxFit.contain),
-          ),
+          backgroundColor: Colors.grey,
+          content: Image.asset(assetPath, fit: BoxFit.contain),
           actions: <Widget>[
             MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Close'),
+              onPressed: () => Navigator.pop(context),
+              child: CustomText(txt: 'Close'),
+              color: Color(0xFFF32152),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             MaterialButton(
               onPressed: () {
                 _saveImageToDevice(context, assetPath);
               },
-              child: Text('Save'),
+              child: CustomText(txt: 'Save'),
+              color: Color(0xFF2196F3),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ],
         );
