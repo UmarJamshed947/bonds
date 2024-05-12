@@ -103,7 +103,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color(0xFF90CAF9),
+        //color: Color(0xFF90CAF9),
         child: FutureBuilder<List<SecFeatures>>(
           future: apiService.fetchSecurityFeatures(prizeBondTypeUid),
           builder: (context, snapshot) {

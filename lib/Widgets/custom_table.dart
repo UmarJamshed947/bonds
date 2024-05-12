@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomTableCell extends StatelessWidget {
    String txt;
    Color? clr;
+   FontWeight? fntWeight;
 
-  CustomTableCell ({required this.txt, this.clr});
+  CustomTableCell ({required this.txt, this.clr,this.fntWeight});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomTableCell extends StatelessWidget {
           txt,
           style: GoogleFonts.poppins(
             // color: Color(0xFF333333),
-            fontWeight: FontWeight.bold,
+            fontWeight:  fntWeight ?? FontWeight.normal ,
             fontSize: 15,
 
             color: clr ?? Color(0xFF2196F3),

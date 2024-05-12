@@ -8,7 +8,8 @@ class TableScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFFFAF8F8),
+        backgroundColor: Colors.white,
+       // backgroundColor: Color(0xFFFAF8F8),
         appBar: AppBar(
           elevation: 3,
           backgroundColor: Color(0xFF2196F3),
@@ -29,30 +30,28 @@ class TableScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomText(
-                  txt: 'GOVERNMENT OF PAKISTAN\n'
-                      'CENTRAL DIRECTORATE OF NATIONAL SAVINGS ISLAMABAD\n'
-                      'No.F.3 (12) Sch-2/PB-15/Draw Schedule.\n'
-                      '24th October, 2023\n'
-                      'DRAW SCHEDULE OF NATIONAL PRIZE BONDS FROM JANUARY, 2024 TO DECEMBER, 2024,',
-                  textAlign: TextAlign.center,
-                  fntSize: 14,
-                  clr:Color(0xFF2196F3),
-                ),
+                CustomText(txt: 'GOVERNMENT OF PAKISTAN',fntSize: 20,clr:Color(0xFF2196F3)),
+                CustomText(txt: 'CENTRAL DIRECTORATE OF NATIONAL SAVINGS ISLAMABAD',textAlign: TextAlign.center,fntSize: 14,clr: Colors.grey[600],fntWeight: FontWeight.normal,),
+               // CustomText(txt:  'No.F.3 (12) Sch-2/PB-15/Draw Schedule',fntSize: 14,clr: Colors.grey[600],fntWeight: FontWeight.normal),
+                //CustomText(txt:  '24th October, 2023',fntSize: 14,clr: Colors.grey[600],fntWeight: FontWeight.normal),
+                CustomText(txt:  'DRAW SCHEDULE OF NATIONAL PRIZE BONDS FROM JANUARY, 2024 TO DECEMBER, 2024,',textAlign: TextAlign.center,fntSize: 14,clr: Colors.grey[600],fntWeight: FontWeight.normal),
+
+
+
 
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(color: Color(0xFF2196F3),width: 2.0),
+                    border: TableBorder.all(color:Color(0xFF2196F3),width: 1.0),
                     children: [
                       TableRow(
                         decoration: BoxDecoration(color: Color(0xFF2196F3)),
                         children: [
-                          CustomTableCell(txt:('Date'),clr: Colors.white,
+                          CustomTableCell(txt:('Date'),fntWeight: FontWeight.bold,clr: Colors.white,
                           ),
-                          CustomTableCell(txt:('Rs.1500/-'),clr: Colors.white,
+                          CustomTableCell(txt:('Rs.1500/-'),fntWeight: FontWeight.bold,clr: Colors.white,
                           ),
-                          CustomTableCell(txt:('Rs.100/-'),clr: Colors.white,
+                          CustomTableCell(txt:('Rs.100/-'),fntWeight: FontWeight.bold,clr: Colors.white,
                           ),
                         ],
                       ),
@@ -120,21 +119,21 @@ class TableScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(color: Color(0xFF2196F3),width: 2.0),
+                    border: TableBorder.all(color: Color(0xFF2196F3),width: 1.0),
                     children: [
 
                       TableRow(
                         decoration: BoxDecoration(color: Color(0xFF2196F3)),
                         children: [
-                          CustomTableCell(txt:('Day'),clr: Colors.white,
+                          CustomTableCell(txt:('Day'),fntWeight: FontWeight.bold,clr: Colors.white,
 
                           ),
-                          CustomTableCell(txt:('Rs.750/-'),clr: Colors.white,
+                          CustomTableCell(txt:('Rs.750/-'),fntWeight: FontWeight.bold,clr: Colors.white,
 
 
 
                           ),
-                          CustomTableCell(txt:('Rs.200/-'),clr: Colors.white,
+                          CustomTableCell(txt:('Rs.200/-'),fntWeight: FontWeight.bold,clr: Colors.white,
 
                           ),
                         ],
@@ -258,7 +257,8 @@ class TableScreen extends StatelessWidget {
                     txt:'DRAW SCHEDULE OF PREMIUM PRIZE BONDS RS.40.000/- & Rs.25.000/- FROM JANUARY, 2024 TO DECEMBER, 2024.',
                     textAlign: TextAlign.center,
                     fntSize: 14,
-                    clr: Color(0xFF2196F3),
+                    fntWeight: FontWeight.normal,
+                    clr: Colors.grey[600],
 
 
                   ),
@@ -267,18 +267,18 @@ class TableScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(color: Color(0xFF2196F3),width: 2.0),
+                    border: TableBorder.all(color: Color(0xFF2196F3),width: 1.0),
                     children: [
                       TableRow(
                         decoration: BoxDecoration(color: Color(0xFF2196F3)),
                         children: [
-                          CustomTableCell(txt:('Day'),clr: Colors.white,
+                          CustomTableCell(txt:('Day'),fntWeight: FontWeight.bold,clr: Colors.white,
 
                           ),
-                          CustomTableCell(txt:('Rs.40,000/-'),clr: Colors.white,
+                          CustomTableCell(txt:('Rs.40,000/-'),fntWeight: FontWeight.bold,clr: Colors.white,
 
                           ),
-                          CustomTableCell(txt:('Rs.25,000/-'),clr: Colors.white,
+                          CustomTableCell(txt:('Rs.25,000/-'),fntWeight: FontWeight.bold,clr: Colors.white,
 
                           ),
                         ],

@@ -4,13 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomText extends StatelessWidget {
 
   String txt;
+  String? heading;
   Color? clr;
   double? fntSize;
   FontWeight? fntWeight;
   double? ltrSpacing;
   TextAlign? textAlign;
 
-  CustomText ({ required this.txt, this.fntSize,this.fntWeight,this.clr, this.ltrSpacing,this.textAlign
+  CustomText ({ required this.txt, this.fntSize,this.fntWeight,this.clr, this.ltrSpacing,this.textAlign,this.heading
   //  this.clr,  this.fntSize,  this.fntWeight,  this.ltrSpacing
   });
 

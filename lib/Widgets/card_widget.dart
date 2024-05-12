@@ -79,7 +79,7 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
+      elevation: 3,
       color: color,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -100,7 +100,7 @@ class CardWidget extends StatelessWidget {
         Icon(
           icon,
           size: 40,
-          color: Colors.white,
+          color: Colors.blueAccent,
         ),
         SizedBox(height: 10),
         Padding(
@@ -109,7 +109,7 @@ class CardWidget extends StatelessWidget {
             txt,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
-              color: Colors.white,
+              color: Colors.blueAccent,
               fontSize: 16,
               fontWeight: FontWeight.w600,
               letterSpacing: 1,

@@ -11,7 +11,7 @@ class Denominations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0xFF2196F3),
         elevation: 3,
@@ -71,7 +71,7 @@ class Denominations extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white,
           content: Image.asset(assetPath, fit: BoxFit.contain),
           actions: <Widget>[
             MaterialButton(

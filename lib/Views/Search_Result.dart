@@ -66,108 +66,82 @@ class SearchResult extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
-                      color: Color(0xFF2196F3),
-                      elevation: 4,
+                      elevation: 3,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Prize Category:',
-                                    clr: Colors.white,
-                                  ),
-                                  CustomText(
-                                    txt: searchBond.prize,
-                                    clr: Colors.white,
-                                  ),
-                                ],
+                      child: Container(
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF2196F3), Colors.lightBlueAccent],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            stops: [0.0, 1], // Adjust stops as needed
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: CustomText(
+                                txt: searchBond.prizeBondType,
+
+                                clr: Colors.yellowAccent,
+                                fntSize: 30,
+
                               ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Bond Number:',
-                                    clr: Colors.white,
-                                  ),
-                                  CustomText(
-                                    txt: searchBond.prizeBondNumber,
-                                    clr: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Prize Amount:',
+                            ),
+                            // Top center: Prize
+                            CustomText(
+                              txt:searchBond.prize,
+                              textAlign: TextAlign.start,
+
+                                clr: Colors.white,
+                                fntWeight: FontWeight.normal,
+                                fntSize: 24,
+
+                            ),
+
+
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(
+                                  txt:'Prize Amount: ${searchBond.prizeAmount}/-',
+
                                     clr: Colors.yellowAccent,
-                                  ),
-                                  CustomText(
-                                    txt: '${searchBond.prizeAmount}',
-                                    clr: Colors.yellowAccent,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Draw Place:',
+                                  fntSize: 16,
+                                  fntWeight: FontWeight.normal,
+
+                                ),
+                                SizedBox(height: 2),
+                                CustomText(
+                                  txt:'Bond Number: ${searchBond.prizeBondNumber}',
+
                                     clr: Colors.white,
-                                  ),
-                                  CustomText(
-                                    txt: searchBond.heldAt,
+                                  fntSize: 16,
+                                  fntWeight: FontWeight.normal,
+
+                                ),
+                                SizedBox(height: 2),
+                                CustomText(
+                                  txt:'Draw Date: ${DateFormat('dd MMMM yyyy').format(searchBond.drawDate)}',
+
                                     clr: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Draw Number:',
-                                    clr:Colors.white,
-                                  ),
-                                  CustomText(
-                                    txt: searchBond.drawNumber,
-                                    clr: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Draw Date:',
-                                    clr: Colors.white,
-                                  ),
-                                  CustomText(
-                                    txt: DateFormat('dd MMMM yyyy')
-                                        .format(searchBond.drawDate),
-                                    clr: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
+                                  fntSize: 16,
+                                  fntWeight: FontWeight.normal,
+
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+
                     ),
                   );
                 },

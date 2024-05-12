@@ -41,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         elevation: 3,
-        // backgroundColor: Color(0xFF2EC4B6),
+        backgroundColor: Color(0xFF2196F3),
         title: CustomText(txt: "Prize Bonds", fntSize: 22),
         centerTitle: true,
         leading: IconButton(
@@ -56,10 +56,9 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       body: Container(
-        color: Colors.grey.shade300,
-        // decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //         colors: [Color(0xFFFAD585), Color(0xFFF47A7D)])),
+
+
+
         child: Column(children: [
           Container(
             padding: EdgeInsets.only(top: 50),
@@ -101,8 +100,8 @@ class _DashboardState extends State<Dashboard> {
               padding: EdgeInsets.only(top: 60),
               width: double.infinity,
               decoration: BoxDecoration(
-                //color: Color(0xFFCDE6F8),
-                 color: Color(0xFF90CAF9),
+                color: Color(0xFF2196F3),
+
 
 
                 borderRadius: BorderRadius.only(
@@ -121,7 +120,7 @@ class _DashboardState extends State<Dashboard> {
                     CardWidget(
                       txt: "Draw-Search",
                       icon: Icons.search,
-                      color: Color(0xFF2196F3),
+                      color: Colors.white,
 
                       onTap: () {
                         print("Draw-Search card tapped");
@@ -142,7 +141,8 @@ class _DashboardState extends State<Dashboard> {
                     CardWidget(
                       txt: "Schedules",
                       icon: Icons.event,
-                      color: Color(0xFF2196F3),
+                      //color: Color(0xFF2196F3),
+                      color: Colors.white,
 
                       onTap: () {
                         print("Draw-Search card tapped");
@@ -156,7 +156,8 @@ class _DashboardState extends State<Dashboard> {
                     CardWidget(
                       txt: "Sec-Features",
                       icon: Icons.security,
-                      color: Color(0xFF2196F3),
+                      //color: Color(0xFF2196F3),
+                      color: Colors.white,
 
                       onTap: () {
                         print("Draw-Search card tapped");
@@ -176,7 +177,7 @@ class _DashboardState extends State<Dashboard> {
                     CardWidget(
                       txt: "Denominations",
                       icon: Icons.attach_money_outlined,
-                      color: Color(0xFF2196F3),
+                        color: Colors.white,
     onTap: () {
       print("Draw-Search card tapped");
       Navigator.push(

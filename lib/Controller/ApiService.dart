@@ -83,7 +83,8 @@ class ApiService {
 
   //////////////////////////////////////////////////////////////////////////////////////////
   Future<List<RangeSearch>> fetchRangeSearchData(String drawUid,  int firstNumber, int lastNumber, String prizeBondTypeUid) async {
-    prizeBondTypeUid = (prizeBondTypeUid == 'ALL') ? '' : prizeBondTypeUid;
+    //prizeBondTypeUid = (drawUid == 'ALL') ? '' : prizeBondTypeUid;
+    drawUid = (drawUid == 'ALL') ? '' : drawUid;
     final url = Uri.parse('https://prizebond.idev.im/api/v1/search/range');
 
     // Headers
@@ -99,8 +100,8 @@ class ApiService {
     Map<String, dynamic> body = {
       'prize_bond_number_first': firstNumber.toString(),
       'prize_bond_number_last': lastNumber.toString(),
-      // 'prize_bond_type_uid': drawUid,
-      'draw_uid':drawUid,
+      'prize_bond_type_uid': drawUid,
+      //'draw_uid':drawUid,
     };
     if (prizeBondTypeUid.isNotEmpty) {
       //body['draw_uid'] = prizeBondTypeUid;

@@ -320,7 +320,7 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAF8F8),
+      //backgroundColor: Color(0xFFDCDCDC),
       appBar: AppBar(
         elevation: 3,
         backgroundColor: Color(0xFF2196F3),
@@ -394,8 +394,7 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                         },
                         child: Theme(
                           data: Theme.of(context).copyWith(
-                            unselectedWidgetColor: Color(
-                                0xFF2196F3), // Change non-active color here
+                            unselectedWidgetColor: Color(0xFF2196F3), // Change non-active color here
                           ),
                           child: Radio(
                             value: 0,
@@ -408,6 +407,7 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                             },
                             activeColor: Color(0xFF2196F3),
                             hoverColor: Color(0xFF2196F3),
+                            focusColor: Color(0xFF2196F3),
                             materialTapTargetSize:
                                 MaterialTapTargetSize.shrinkWrap,
                           ),
@@ -439,6 +439,8 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                               _animationController.forward(from: 0);
                             },
                             activeColor: Color(0xFF2196F3),
+                            hoverColor: Color(0xFF2196F3),
+                            focusColor: Color(0xFF2196F3),
                             materialTapTargetSize:
                                 MaterialTapTargetSize.shrinkWrap,
                           ),
@@ -463,7 +465,8 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                             txt:
                                 'Search For All Numbers in Range EXAMPLE: From: 122000 To: 122099',
                             clr: Color(0xFF2196F3),
-                            fntSize: 16),
+                            fntSize: 14,
+                        fntWeight: FontWeight.normal),
                         SizedBox(height: 20),
                         Container(
                           child: Column(
@@ -479,8 +482,10 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                               Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: CustomTextField(
-                                    controller: _fromRangeController),
+                                    controller: _fromRangeController,
+                                requiredMessage: '* this field is required',),
                               ),
+
                               Padding(
                                 padding: EdgeInsets.all(4.0),
                                 child: CustomText(
@@ -491,7 +496,8 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                               Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: CustomTextField(
-                                    controller: _toRangeController),
+                                    controller: _toRangeController,
+                                requiredMessage: '* this field is required',),
                               ),
                             ],
                           ),
@@ -514,7 +520,8 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: CustomTextField(
-                                controller: _randomRangeController),
+                                controller: _randomRangeController,
+                            requiredMessage: '* the field is required',),
                           ),
                         ],
                       ),
@@ -603,7 +610,7 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
             )*/
             MaterialButton(
               onPressed: () async {
-                if (selectedRadio == 0 && bondTypeUid != null) {
+                if (selectedRadio == 0 && bondTypeUid != null && _fromRangeController.text.trim() != ''  && _toRangeController.text.trim() != '' ) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -615,12 +622,12 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                       ),
                     ),
                   );
-                } else if (selectedRadio == 0) {
+                } else  {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
                       title: CustomText(txt: 'Warning', clr: Colors.red),
-                      content: Text('Please select both dropdowns first.'),
+                      content: Text('To proceed, please ensure all fields are filled out.'),
                       actions: [
                         MaterialButton(
                           onPressed: () => Navigator.pop(context),
@@ -655,7 +662,7 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: CustomText(txt: 'Warning', clr: Colors.red),
-                      content: Text('Please select both dropdowns first.'),
+                      content: Text('To proceed, please ensure all fields are filled out.'),
                       actions: [
                         MaterialButton(
                           onPressed: () => Navigator.pop(context),

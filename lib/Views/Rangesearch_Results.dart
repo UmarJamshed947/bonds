@@ -73,116 +73,160 @@ class RangeSearchResult extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.only(top: 15, left: 5, right: 5),
                     child: Card(
-                      color: Color(0xFF2196F3),
                       elevation: 3,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
+                      child: Container(
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF2196F3), Colors.blueGrey[600]!],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            stops: [0.0, 0.7], // Adjust stops as needed
+                          ),
+                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: CustomText(
+                              txt: rangeSearch.prizeBondType,
+
+                              clr: Colors.yellowAccent,
+                              fntSize: 30,
+
+                            ),
+                          ),
+                          CustomText(
+                            txt:rangeSearch.prize,
+                            textAlign: TextAlign.start,
+
+                            clr: Colors.white,
+                            fntWeight: FontWeight.normal,
+                            fntSize: 24,
+
+                          ),
+
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Prize Category:',
-                                      clr: Colors.white,
-                                  ),
+                              CustomText(
+                                txt:'Prize Amount: ${rangeSearch.prizeAmount}/-',
 
-                                  CustomText(
-                                    txt: rangeSearch.prize,
-                                    clr: Colors.white,
-                                  ),
-                                ],
+                                clr: Colors.yellowAccent,
+                                fntSize: 16,
+                                fntWeight: FontWeight.normal,
+
                               ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Bond Number:',
-                                    clr: Colors.white,
-                                  ),
+                              SizedBox(height: 2),
+                              CustomText(
+                                txt:'Bond Number: ${rangeSearch.prizeBondNumber}',
 
-                                  CustomText(
-                                    txt: rangeSearch.prizeBondNumber,
-                                    clr: Colors.white,
-                                  ),
-                                ],
+                                clr: Colors.white,
+                                fntSize: 16,
+                                fntWeight: FontWeight.normal,
+
                               ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Prize Amount:',
-                                    clr:Colors.yellowAccent,
-                                  ),
+                              SizedBox(height: 2),
+                              CustomText(
+                                txt:'Draw Date: ${DateFormat('dd MMMM yyyy').format(rangeSearch.drawDate)}',
 
-                                  CustomText(
-                                    txt: '${rangeSearch.prizeAmount}',
-                                    clr: Colors.yellowAccent,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Draw Place:',
-                                    clr: Colors.white,
-                                  ),
+                                clr: Colors.white,
+                                fntSize: 16,
+                                fntWeight: FontWeight.normal,
 
-                                  CustomText(
-                                    txt: rangeSearch.heldAt,
-                                    clr: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Draw Number:',
-                                    clr: Colors.white,
-                                  ),
-
-                                  CustomText(
-                                    txt: rangeSearch.drawNumber,
-                                    clr: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    txt: 'Draw Date:',
-                                    clr: Colors.white,
-                                  ),
-
-                                  CustomText(
-                                    txt: DateFormat('dd MMMM yyyy')
-                                        .format(rangeSearch.drawDate),
-                                    clr: Colors.white,
-                                  ),
-                                ],
                               ),
                             ],
-                          )),
+                          ),
+                       /*   SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                txt: 'Bond Number:',
+                                clr: Colors.white,
+                              ),
+
+                              CustomText(
+                                txt: rangeSearch.prizeBondNumber,
+                                clr: Colors.white,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                txt: 'Prize Amount:',
+                                clr:Colors.yellowAccent,
+                              ),
+
+                              CustomText(
+                                txt: '${rangeSearch.prizeAmount}',
+                                clr: Colors.yellowAccent,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                txt: 'Draw Place:',
+                                clr: Colors.white,
+                              ),
+
+                              CustomText(
+                                txt: rangeSearch.heldAt,
+                                clr: Colors.white,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                txt: 'Draw Number:',
+                                clr: Colors.white,
+                              ),
+
+                              CustomText(
+                                txt: rangeSearch.drawNumber,
+                                clr: Colors.white,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                txt: 'Draw Date:',
+                                clr: Colors.white,
+                              ),
+
+                              CustomText(
+                                txt: DateFormat('dd MMMM yyyy')
+                                    .format(rangeSearch.drawDate),
+                                clr: Colors.white,
+                              ),
+                            ],
+                          ),*/
+                        ],
+                      ),
                     ),
-                  );
+                  ));
                 },
               );
             }

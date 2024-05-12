@@ -4,6 +4,8 @@ import 'package:bonds/Widgets/date_dropdown.dart';
 import 'package:bonds/Widgets/draw_dropdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Widgets/customtext.dart';
+
 class ScheduleScreen extends StatefulWidget {
   @override
   State<ScheduleScreen> createState() => _ScheduleScreenState();
@@ -17,15 +19,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
       appBar: AppBar(
         elevation: 0,
         //backgroundColor: Color(0xFF2196F3),
-        title: Text(
-          'Schedule',
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1,
-          ),
-        ),
+        title: CustomText(txt: 'Draw Search', fntSize: 22),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -47,7 +41,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 "PRIZE BOND DRAW SCHEDULE 2022",
                 style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1,
                 ),
