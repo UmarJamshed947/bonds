@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../Widgets/custom_table.dart';
 import '../Widgets/customtext.dart';
 
-class TableScreen extends StatelessWidget {
+class Schedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

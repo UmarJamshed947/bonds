@@ -1,6 +1,8 @@
 import 'package:bonds/Views/sec_feature_display.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Widgets/customtext.dart';
 // Assuming this is your import for DisplaySecurityFeatures
 
 class SecurityFeatures extends StatelessWidget {
@@ -20,14 +22,13 @@ class SecurityFeatures extends StatelessWidget {
 
         elevation: 3,
 
-        title: Text(
-          'Security Features',
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1,
-          ),
+        title: CustomText(
+         txt: 'Security Features',
+
+            fntSize: 22,
+         
+
+
         ),
         centerTitle: true,
         leading: IconButton(
