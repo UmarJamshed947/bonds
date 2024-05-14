@@ -54,8 +54,14 @@ class SearchResult extends StatelessWidget {
                 child: Text('Error: ${snapshot.error}'),
               );
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(
-                child: Text('No results found.'),
+              return AlertDialog(
+                title: Text('No results found.'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('OK',style: TextStyle(fontSize: 20),),
+                  ),
+                ],
               );
             } else {
               List<SearchBond> searchResults = snapshot.data!;

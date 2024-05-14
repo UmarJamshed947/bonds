@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:bonds/Models/Draw_Date.dart';
-import 'package:bonds/Views/Schedule_Screen.dart';
-import 'package:bonds/Views/Security_Features.dart';
+
+import 'package:bonds/Views/sec_features.dart';
 import 'package:bonds/Views/denominations.dart';
-import 'package:bonds/Views/table.dart';
+import 'package:bonds/Views/schedule.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:bonds/widgets/date_dropdown.dart';
 import 'package:bonds/widgets/draw_dropdown.dart';
@@ -12,7 +12,8 @@ import 'package:bonds/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonds/widgets/card_widget.dart';
 import '../Widgets/customtext.dart';
-import 'Draw_Search.dart';
+import '../Widgets/web_view.dart';
+import 'draw_search.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -40,25 +41,23 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 3,
         backgroundColor: Color(0xFF2196F3),
         title: CustomText(txt: "Prize Bonds", fntSize: 22),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-          color: Colors.black,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(
+        //     Icons.menu,
+        //     color: Colors.white,
+        //   ),
+        //   color: Colors.black,
+        //   onPressed: () {
+        //     Navigator.of(context).pop();
+        //   },
+        // ),
       ),
       body: Container(
-
-
-
         child: Column(children: [
           Container(
             padding: EdgeInsets.only(top: 50),
@@ -89,8 +88,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
-          SizedBox(height: 40),
-
+          SizedBox(height: 20),
           SearchWidget(
               dateUid: selectedDate ?? '',
               prizeBondTypeUid: selectedDrawUid ?? ''),
@@ -101,9 +99,6 @@ class _DashboardState extends State<Dashboard> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Color(0xFF2196F3),
-
-
-
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
@@ -124,8 +119,8 @@ class _DashboardState extends State<Dashboard> {
 
                       onTap: () {
                         print("Draw-Search card tapped");
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Drawsearch()));
-
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => Draw()));
                       },
                       //color: Color(0xFF2ECC71), // Green
                     ),
@@ -149,7 +144,7 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => TableScreen()));
+                                builder: (context) => Schedule()));
                       },
                       // color: Color(0xFFE67E22), // Orange
                     ),
@@ -175,18 +170,18 @@ class _DashboardState extends State<Dashboard> {
                           // color: Color(0xFF1ABC9C), // Turquoise
                         ),*/
                     CardWidget(
-                      txt: "Denominations",
-                      icon: Icons.attach_money_outlined,
+                        txt: "Denominations",
+                        icon: Icons.attach_money_outlined,
                         color: Colors.white,
-    onTap: () {
-      print("Draw-Search card tapped");
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Denominations()));
+                        onTap: () {
+                          print("Draw-Search card tapped");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Denominations()));
 
-      // color: Color(0xFFE74C3C), // Red
-    } ),
+                          // color: Color(0xFFE74C3C), // Red
+                        }),
                   ],
                 ),
               ),

@@ -10,8 +10,9 @@ class CustomText extends StatelessWidget {
   FontWeight? fntWeight;
   double? ltrSpacing;
   TextAlign? textAlign;
+  FontStyle? fontStyle;
 
-  CustomText ({ required this.txt, this.fntSize,this.fntWeight,this.clr, this.ltrSpacing,this.textAlign,this.heading
+  CustomText ({ required this.txt, this.fntSize,this.fntWeight,this.clr, this.ltrSpacing,this.textAlign,this.heading,this.fontStyle,
   //  this.clr,  this.fntSize,  this.fntWeight,  this.ltrSpacing
   });
 
@@ -25,7 +26,8 @@ class CustomText extends StatelessWidget {
           color: clr ?? Colors.white,
           fontSize: fntSize ?? 18,
           fontWeight: fntWeight ?? FontWeight.w700,
-          letterSpacing: ltrSpacing ?? 1),
+          letterSpacing: ltrSpacing ?? 1,
+        fontStyle: fontStyle,),
     );
   }
 }

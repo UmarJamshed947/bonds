@@ -26,12 +26,12 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextField(
-          style:TextStyle(color: Color(0xFF2196F3),fontSize: 16,fontWeight: FontWeight.bold),
+          style:TextStyle(color: Color(0xFF2196F3),fontSize: 14),
           cursorColor: Color(0xFF2196F3),
           controller: controller,
           keyboardType: TextInputType.number,
           inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+            FilteringTextInputFormatter.allow(RegExp(r'[0-9,]')),
           ],
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(

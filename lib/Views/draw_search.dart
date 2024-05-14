@@ -6,8 +6,8 @@
 // import '../Controller/ApiService.dart';
 // import '../Models/Draw_Date.dart';
 // import '../Widgets/customtext.dart';
-// import 'Rangesearch_Results.dart';
-// import 'Search_Result.dart';
+// import 'rangesearch_results.dart';
+// import 'singlesearch_result.dart';
 //
 // class Drawsearch extends StatefulWidget {
 //   @override
@@ -270,8 +270,8 @@ import 'package:flutter/material.dart';
 import '../Controller/ApiService.dart';
 import '../Models/Draw_Date.dart';
 import '../Widgets/customtext.dart';
-import 'Rangesearch_Results.dart';
-import 'Search_Result.dart';
+import 'rangesearch_results.dart';
+import 'singlesearch_result.dart';
 
 class Drawsearch extends StatefulWidget {
   @override
@@ -622,27 +622,28 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                       ),
                     ),
                   );
-                } else  {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: CustomText(txt: 'Warning', clr: Colors.red),
-                      content: Text('To proceed, please ensure all fields are filled out.'),
-                      actions: [
-                        MaterialButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: CustomText(txt: 'OK'),
-                          color: Color(0xFF2196F3),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }
+                } else
+                // {
+                // //   showDialog(
+                // //     context: context,
+                // //     builder: (context) => AlertDialog(
+                // //       title: CustomText(txt: 'Warning', clr: Colors.red),
+                // //       content: Text('To proceed, please ensure all fields are filled out.'),
+                // //       actions: [
+                // //         MaterialButton(
+                // //           onPressed: () => Navigator.pop(context),
+                // //           child: CustomText(txt: 'OK'),
+                // //           color: Color(0xFF2196F3),
+                // //           shape: RoundedRectangleBorder(
+                // //             borderRadius: BorderRadius.circular(10),
+                // //           ),
+                // //         ),
+                // //       ],
+                // //     ),
+                // //   );
+                //  }
 
-                if (selectedRadio == 1 && bondTypeUid != null) {
+                if (selectedRadio == 1 && bondTypeUid != null && _randomRangeController.text.trim() != '') {
                   String prizeBondTypeUid = bondTypeUid.toString();
                   String prizeBond = _randomRangeController.text.trim();
                   if (prizeBond.isNotEmpty) {
@@ -664,13 +665,10 @@ class _DrawsearchState extends State<Drawsearch> with TickerProviderStateMixin {
                       title: CustomText(txt: 'Warning', clr: Colors.red),
                       content: Text('To proceed, please ensure all fields are filled out.'),
                       actions: [
-                        MaterialButton(
+                        TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: CustomText(txt: 'OK'),
-                          color: Color(0xFF2196F3),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                          child: Text( 'OK',style: TextStyle(fontSize: 20),),
+
                         ),
                       ],
                     ),

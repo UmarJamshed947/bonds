@@ -51,7 +51,7 @@ class _DateDropdownState extends State<DateDropdown> {
           children: [
             CustomText(
               txt: 'Select Date',
-              fntSize: 16,
+              fntSize: 12,
             ),
           ],
         ),
@@ -60,7 +60,7 @@ class _DateDropdownState extends State<DateDropdown> {
             value: 'ALL',
             child: CustomText(
               txt: 'Select ALL',
-              fntSize: 16,
+              fntSize: 12,
             ),
           ),
           // Add the drawDates items
@@ -70,7 +70,7 @@ class _DateDropdownState extends State<DateDropdown> {
               value: item.drawUid,
               child: CustomText(
                 txt: formattedDate,
-                fntSize: 16,
+                fntSize: 12,
               ),
             );
           }),

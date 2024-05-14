@@ -1,3 +1,4 @@
+import 'package:bonds/Views/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'Views/Dashboard.dart';
@@ -10,7 +11,7 @@ class Prizebonds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Dashboard(),
+      home: SplashScreen(),
     );
   }
 }

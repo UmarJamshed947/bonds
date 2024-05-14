@@ -178,8 +178,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Widgets/customtext.dart';
-// Assuming this is your import for DisplaySecurityFeatures
 
+class PrizeBondInfo {
+  final String imagePath;
+  final String text;
+  final String prizeBondTypeUid;
+
+  PrizeBondInfo({
+    required this.imagePath,
+    required this.text,
+    required this.prizeBondTypeUid,
+  });
+}
 class SecurityFeatures extends StatelessWidget {
   final List<PrizeBondInfo> prizeBondInfoList = [
     PrizeBondInfo(imagePath: 'assets/images/100.jpg', text: '100', prizeBondTypeUid: '01381510-f10e-4bf9-b41a-cefa39918a5e'),
@@ -211,10 +221,10 @@ class SecurityFeatures extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Adjust the number of columns as needed
+            crossAxisCount: 2,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
-            childAspectRatio: 0.7, // Adjust the aspect ratio of each item
+            childAspectRatio: 0.7,
           ),
           itemCount: prizeBondInfoList.length,
           itemBuilder: (context, index) {
@@ -236,11 +246,9 @@ class SecurityFeatures extends StatelessWidget {
         );
       },
       child: Container(
-        child: Positioned.fill(
-          child: Image.asset(
-            prizeBondInfo.imagePath,
-            fit: BoxFit.fill,
-          ),
+        child: Image.asset(
+          prizeBondInfo.imagePath,
+          fit: BoxFit.fill,
         ),
       ),
 
@@ -260,14 +268,4 @@ class SecurityFeatures extends StatelessWidget {
   }
 }
 
-class PrizeBondInfo {
-  final String imagePath;
-  final String text;
-  final String prizeBondTypeUid;
 
-  PrizeBondInfo({
-    required this.imagePath,
-    required this.text,
-    required this.prizeBondTypeUid,
-  });
-}

@@ -89,7 +89,7 @@ class DisplaySecurityFeatures extends StatelessWidget {
       appBar: AppBar(
         elevation: 3,
         backgroundColor: Color(0xFF2196F3),
-        title: CustomText(txt: 'Security Features ', fntSize: 22),
+        title: CustomText(txt: ' Features ', fntSize: 22),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(

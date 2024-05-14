@@ -1,5 +1,5 @@
 import 'package:bonds/Models/Range_Search.dart';
-import 'package:bonds/Views/Draw_Search.dart';
+import 'package:bonds/Views/draw_search.dart';
 import 'package:bonds/controller/ApiService.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -61,8 +61,14 @@ class RangeSearchResult extends StatelessWidget {
                 child: Text('Error: ${snapshot.error}'),
               );
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(
-                child: Text('No results found.'),
+              return AlertDialog(
+                title: Text('No results found.'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('OK',style: TextStyle(fontSize: 20),),
+                  ),
+                ],
               );
             } else {
               List<RangeSearch> searchResults = snapshot.data!;

@@ -46,7 +46,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
               Expanded(
                 child: CustomText(
                   txt:'Select Draw',
-                  fntSize: 16,
+                  fntSize: 12,
                   // style: TextStyle(
                   //   fontSize: 14,
                   //   fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class _DrawDropdownState extends State<DrawDropdown> {
                     value: item.prizeBondTypeUid,
                     child: CustomText(
                       txt:item.name,
-                      fntSize: 16,
+                      fntSize: 12,
 
 
                     ),

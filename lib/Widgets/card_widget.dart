@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Views/Draw_Search.dart';
+import '../Views/draw_search.dart';
 
 class CardWidget extends StatelessWidget {
 
